@@ -1,8 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-const FloatingButton = ({ onclick, buttonAfIcon }) => (
-  <a className="floating-btn" onClick={onclick}>
+const FloatingButton = ({ onclick, buttonAfIcon, bgColor }) => (
+  <a
+    className="floating-btn"
+    onClick={onclick}
+    style={{ backgroundColor: bgColor }}>
     <i className={`fa ${buttonAfIcon}`} />
   </a>
 )
@@ -13,7 +16,8 @@ FloatingButton.propTypes = {
 }
 
 FloatingButton.defaultProps = {
-  buttonAfIcon: 'fa-plus'
+  buttonAfIcon: 'fa-plus',
+  bgColor: '#3544fd'
 }
 
 export default FloatingButton

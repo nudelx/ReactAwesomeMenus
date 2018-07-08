@@ -22,14 +22,33 @@ class CircularMenu extends Component {
   onSelect = e => this.setState({ active: false, selected: e.target.id })
 
   render() {
-    const { options, spinDirection, halfSpin, buttonAfIcon } = this.props
+    console.log(this.state)
+    const {
+      options,
+      spinDirection,
+      halfSpin,
+      buttonAfIcon,
+      itemsDirection,
+      buttonColor,
+      menuColor
+    } = this.props
     return (
       <div
         id="circularMenu"
-        className={`circular-menu ${
-          spinDirection === 'right' ? spinDirection : 'left'
-        } ${halfSpin ? 'half' : 'third'} ${this.state.active ? 'active' : ''}`}>
-        <FloatingButton onclick={this.onclick} buttonAfIcon={buttonAfIcon} />
+        className={`circular-menu  items-${
+          itemsDirection === 'right' ? itemsDirection : 'left'
+        } ${spinDirection === 'right' ? spinDirection : 'left'} ${
+          halfSpin ? 'half' : 'third'
+        } ${this.state.active ? 'active' : ''}`}
+        style={{
+          backgroundColor: this.state.active ? menuColor : 'inherit',
+          borderRadius: '50%'
+        }}>
+        <FloatingButton
+          onclick={this.onclick}
+          buttonAfIcon={buttonAfIcon}
+          bgColor={buttonColor}
+        />
         <Menu>
           {options.map((item, indx) => (
             <a
@@ -55,13 +74,17 @@ CircularMenu.defaultProps = {
   ],
   halfSpin: true,
   spinDirection: 'right',
-  buttonAfIcon: 'fa-bars'
+  itemsDirection: 'right',
+  buttonAfIcon: 'fa-bars',
+  buttonColor: '#3544fd',
+  menuColor: '#3544fd'
 }
 
 CircularMenu.propTypes = {
   onChange: PropTypes.func,
   halfSpin: PropTypes.bool,
   spinDirection: PropTypes.string,
+  itemsDirection: PropTypes.string,
   buttonAfIcon: PropTypes.string,
   options: PropTypes.arrayOf(
     PropTypes.shape({

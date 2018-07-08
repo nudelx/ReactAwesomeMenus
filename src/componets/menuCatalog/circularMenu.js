@@ -51,7 +51,6 @@ class CircularMenu extends Component {
       spinDirection,
       halfSpin,
       buttonAfIcon,
-      itemsDirection,
       buttonColor,
       menuColor
     } = this.props
@@ -76,7 +75,7 @@ class CircularMenu extends Component {
           {options.map((item, index) => {
             const { x, y } = this.calculateAlpha(index)
             return (
-              <a
+              <button
                 key={`${item.name}_${index}`}
                 id={item.name}
                 href="#"

@@ -84,6 +84,8 @@
 }
 
 .circular-menu .menu-item {
+  outline: none;
+  border: 0px;
   position: absolute;
   top: 0.2em;
   right: 0.2em;

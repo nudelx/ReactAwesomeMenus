@@ -11,6 +11,7 @@
   height: 3.5em;
   border-radius: 50%;
   /* background-color: hsl(4, 98%, 60%); */
+  -webkit-box-shadow: 0 2px 5px 0 hsla(0, 0%, 0%, 0.26);
   box-shadow: 0 2px 5px 0 hsla(0, 0%, 0%, 0.26);
   color: hsl(0, 0%, 100%);
   text-align: center;
@@ -20,28 +21,37 @@
 }
 
 .circular-menu.active .floating-btn {
+  -webkit-box-shadow: inset 0 0 3px hsla(0, 0%, 0%, 0.3);
   box-shadow: inset 0 0 3px hsla(0, 0%, 0%, 0.3);
 }
 
 .circular-menu .floating-btn:active {
+  -webkit-box-shadow: 0 4px 8px 0 hsla(0, 0%, 0%, 0.4);
   box-shadow: 0 4px 8px 0 hsla(0, 0%, 0%, 0.4);
 }
 
 .circular-menu .floating-btn i {
   font-size: 1.3em;
+  -webkit-transition: -webkit-transform 0.2s;
+  transition: -webkit-transform 0.2s;
   transition: transform 0.2s;
+  transition: transform 0.2s, -webkit-transform 0.2s;
 }
 
 .circular-menu.third.right.active .floating-btn i {
+  -webkit-transform: rotate(45deg);
   transform: rotate(45deg);
 }
 .circular-menu.half.right.active .floating-btn i {
+  -webkit-transform: rotate(90deg);
   transform: rotate(90deg);
 }
 .circular-menu.third.left.active .floating-btn i {
+  -webkit-transform: rotate(-45deg);
   transform: rotate(-45deg);
 }
 .circular-menu.half.left.active .floating-btn i {
+  -webkit-transform: rotate(-90deg);
   transform: rotate(-90deg);
 }
 
@@ -57,11 +67,14 @@
   z-index: -2;
   /* background-color: hsl(4, 98%, 60%); */
   background-color: inherit;
+  -webkit-transition: all 0.3s ease;
   transition: all 0.3s ease;
 }
 
 .circular-menu.active:after {
+  -webkit-transform: scale3d(5.5, 5.5, 1);
   transform: scale3d(5.5, 5.5, 1);
+  -webkit-transition-timing-function: cubic-bezier(0.68, 1.55, 0.265, 1);
   transition-timing-function: cubic-bezier(0.68, 1.55, 0.265, 1);
 }
 
@@ -85,7 +98,11 @@
   text-align: center;
   line-height: 3;
   background-color: hsla(0, 0%, 0%, 0.1);
+  -webkit-transition: background 0.2s ease, -webkit-transform 0.3s ease;
+  transition: background 0.2s ease, -webkit-transform 0.3s ease;
   transition: transform 0.3s ease, background 0.2s ease;
+  transition: transform 0.3s ease, background 0.2s ease,
+    -webkit-transform 0.3s ease;
 }
 
 .circular-menu .menu-item:hover {
@@ -93,54 +110,20 @@
 }
 
 .circular-menu.active .menu-item {
+  -webkit-transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
   transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
-
-.circular-menu.active .menu-item:nth-child(1) {
-  transform: translate3d(1em, -7em, 0);
+.menu-item.fadein {
+  -webkit-transition: opacity 2s ease-in;
+  transition: opacity 2s ease-in;
+  opacity: 1;
 }
 
-.circular-menu.active .menu-item:nth-child(2) {
-  transform: translate3d(-3.5em, -6.3em, 0);
-}
-
-.circular-menu.active .menu-item:nth-child(3) {
-  transform: translate3d(-6.5em, -3.2em, 0);
-}
-
-.circular-menu.active .menu-item:nth-child(4) {
-  transform: translate3d(-7em, 1em, 0);
-}
-
-.circular-menu.circular-menu-left {
-  /* right: auto;
-  left: 1em; */
-}
-
-.circular-menu.circular-menu-left .floating-btn {
-  /* background-color: hsl(217, 89%, 61%); */
-}
-
-.circular-menu.items-right:after {
-  /* background-color: hsl(217, 89%, 61%); */
+.menu-item.fadeout {
+  opacity: 0;
 }
 
 .circular-menu.items-right.active .floating-btn i {
+  -webkit-transform: rotate(90deg);
   transform: rotate(90deg);
-}
-
-.circular-menu.items-right.active .menu-item:nth-child(1) {
-  transform: translate3d(-1em, -7em, 0);
-}
-
-.circular-menu.items-right.active .menu-item:nth-child(2) {
-  transform: translate3d(3.5em, -6.3em, 0);
-}
-
-.circular-menu.items-right.active .menu-item:nth-child(3) {
-  transform: translate3d(6.5em, -3.2em, 0);
-}
-
-.circular-menu.items-right.active .menu-item:nth-child(4) {
-  transform: translate3d(7em, 1em, 0);
 }

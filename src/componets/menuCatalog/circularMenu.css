@@ -1,7 +1,8 @@
 .circular-menu {
-  position: absolute;
-  bottom: 1em;
-  right: 1em;
+  width: 56px;
+  height: 56px;
+  position: relative;
+  display: inline-block;
   z-index: 100;
 }
 .circular-menu .floating-btn {
@@ -31,8 +32,17 @@
   transition: transform 0.2s;
 }
 
-.circular-menu.active .floating-btn i {
+.circular-menu.third.right.active .floating-btn i {
+  transform: rotate(45deg);
+}
+.circular-menu.half.right.active .floating-btn i {
+  transform: rotate(90deg);
+}
+.circular-menu.third.left.active .floating-btn i {
   transform: rotate(-45deg);
+}
+.circular-menu.half.left.active .floating-btn i {
+  transform: rotate(-90deg);
 }
 
 .circular-menu:after {
@@ -101,13 +111,9 @@
   transform: translate3d(-7em, 1em, 0);
 }
 
-/**
- * The other theme for this menu
- */
-
 .circular-menu.circular-menu-left {
-  right: auto;
-  left: 1em;
+  /* right: auto;
+  left: 1em; */
 }
 
 .circular-menu.circular-menu-left .floating-btn {

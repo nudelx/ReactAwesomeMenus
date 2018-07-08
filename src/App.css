@@ -35,10 +35,10 @@ div.stage {
   padding: 15px;
 }
 div.box {
-  min-width: 500px;
-  min-height: 500px;
+  min-width: 350px;
+  min-height: 350px;
   display: inline-block;
   border: 1px solid #ccc;
-  line-height: 500px;
+  line-height: 350px;
   position: relative;
 }

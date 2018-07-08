@@ -1,6 +1,7 @@
-import './circularMenu.css'
-import PropTypes from 'prop-types'
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
+import FloatingButton from '../common/floatingButton'
+import './circularMenu.css'
 
 class CircularMenu extends Component {
   state = { active: false }
@@ -20,19 +21,18 @@ class CircularMenu extends Component {
   onSelect = e => this.setState({ active: false, selected: e.target.id })
 
   render() {
-    const { options } = this.props
+    const { options, spinDirection, halfSpin, buttonAfIcon } = this.props
     return (
       <div
         id="circularMenu"
-        className={`circular-menu ${this.state.active ? 'active' : ''}`}>
-        <a className="floating-btn" onClick={this.onclick}>
-          <i className="fa fa-plus" />
-        </a>
-
+        className={`circular-menu ${
+          spinDirection === 'right' ? spinDirection : 'left'
+        } ${halfSpin ? 'half' : 'third'} ${this.state.active ? 'active' : ''}`}>
+        <FloatingButton onclick={this.onclick} buttonAfIcon={buttonAfIcon} />
         <menu className="items-wrapper">
-          {options.map(item => (
+          {options.map((item, indx) => (
             <a
-              key={item.name}
+              key={`${item.name}_${indx}`}
               id={item.name}
               href="#"
               onClick={this.onSelect}
@@ -51,11 +51,17 @@ CircularMenu.defaultProps = {
     { name: 'twitter', class: 'fa-twitter' },
     { name: 'google', class: 'fa-google-plus' },
     { name: 'linkedin', class: 'fa-linkedin' }
-  ]
+  ],
+  halfSpin: true,
+  spinDirection: 'right',
+  buttonAfIcon: 'fa-bars'
 }
 
 CircularMenu.propTypes = {
   onChange: PropTypes.func,
+  halfSpin: PropTypes.bool,
+  spinDirection: PropTypes.string,
+  buttonAfIcon: PropTypes.string,
   options: PropTypes.arrayOf(
     PropTypes.shape({
       name: PropTypes.string,

@@ -11,7 +11,7 @@ class CircularMenu extends Component {
     this.radius = 120
     this.total = props.options.length
     this.optimalAlphaStep = 35
-    this.startAlpha = -90
+    this.startAlpha = props.startAׁngle
     this.currentAlpha = this.startAlpha
   }
 
@@ -112,7 +112,8 @@ CircularMenu.defaultProps = {
   itemsDirection: 'right',
   buttonAfIcon: 'fa-bars',
   buttonColor: '#FF86B2',
-  menuColor: '#FF86B2'
+  menuColor: '#FF86B2',
+  startAׁngle: -90
 }
 
 CircularMenu.propTypes = {
@@ -121,6 +122,7 @@ CircularMenu.propTypes = {
   spinDirection: PropTypes.string,
   itemsDirection: PropTypes.string,
   buttonAfIcon: PropTypes.string,
+  startAׁngle: PropTypes.number,
   options: PropTypes.arrayOf(
     PropTypes.shape({
       name: PropTypes.string,

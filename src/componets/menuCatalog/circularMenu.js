@@ -63,7 +63,7 @@ class CircularMenu extends Component {
           spinDirection === 'right' ? spinDirection : 'left'
         } ${halfSpin ? 'half' : 'third'} ${active ? 'active' : ''}`}
         style={{
-          backgroundColor: active ? menuColor : 'inherit',
+          backgroundColor: active ? menuColor || buttonColor : 'inherit',
           borderRadius: '50%'
         }}>
         <FloatingButton
@@ -110,7 +110,6 @@ CircularMenu.defaultProps = {
   itemsDirection: 'right',
   buttonAfIcon: 'fa-bars',
   buttonColor: '#FF86B2',
-  menuColor: '#FF86B2',
   startAׁngle: -90
 }
 

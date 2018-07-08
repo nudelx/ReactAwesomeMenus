@@ -13,6 +13,7 @@ class CircularMenu extends Component {
     this.optimalAlphaStep = 35
     this.startAlpha = props.startAׁngle
     this.currentAlpha = this.startAlpha
+    this.direction = props.itemsDirection === 'right' ? 1 : -1
   }
 
   componentDidUpdate(prevProps) {
@@ -40,7 +41,7 @@ class CircularMenu extends Component {
     this.currentAlpha = index === 0 ? this.startAlpha : this.currentAlpha
     this.currentAlpha = this.currentAlpha >= 360 ? 0 : this.currentAlpha
     const position = this.calculatePosition(this.currentAlpha)
-    this.currentAlpha += this.optimalAlphaStep
+    this.currentAlpha += this.optimalAlphaStep * this.direction
     return position
   }
 
@@ -59,11 +60,9 @@ class CircularMenu extends Component {
     return (
       <div
         id="circularMenu"
-        className={`circular-menu  items-${
-          itemsDirection === 'right' ? itemsDirection : 'left'
-        } ${spinDirection === 'right' ? spinDirection : 'left'} ${
-          halfSpin ? 'half' : 'third'
-        } ${active ? 'active' : ''}`}
+        className={`circular-menu ${
+          spinDirection === 'right' ? spinDirection : 'left'
+        } ${halfSpin ? 'half' : 'third'} ${active ? 'active' : ''}`}
         style={{
           backgroundColor: active ? menuColor : 'inherit',
           borderRadius: '50%'

@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import FloatingButton from '../common/floatingButton'
+import Menu from '../common/menu'
 import './circularMenu.css'
 
 class CircularMenu extends Component {
@@ -29,7 +30,7 @@ class CircularMenu extends Component {
           spinDirection === 'right' ? spinDirection : 'left'
         } ${halfSpin ? 'half' : 'third'} ${this.state.active ? 'active' : ''}`}>
         <FloatingButton onclick={this.onclick} buttonAfIcon={buttonAfIcon} />
-        <menu className="items-wrapper">
+        <Menu>
           {options.map((item, indx) => (
             <a
               key={`${item.name}_${indx}`}
@@ -39,7 +40,7 @@ class CircularMenu extends Component {
               className={`menu-item fa ${item.class}`}
             />
           ))}
-        </menu>
+        </Menu>
       </div>
     )
   }

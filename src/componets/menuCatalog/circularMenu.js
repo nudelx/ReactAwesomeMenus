@@ -22,7 +22,6 @@ class CircularMenu extends Component {
   onSelect = e => this.setState({ active: false, selected: e.target.id })
 
   render() {
-    console.log(this.state)
     const {
       options,
       spinDirection,
@@ -76,8 +75,8 @@ CircularMenu.defaultProps = {
   spinDirection: 'right',
   itemsDirection: 'right',
   buttonAfIcon: 'fa-bars',
-  buttonColor: '#3544fd',
-  menuColor: '#3544fd'
+  buttonColor: '#FF86B2',
+  menuColor: '#FF86B2'
 }
 
 CircularMenu.propTypes = {

@@ -22,6 +22,7 @@ const options2 = [
 const Stage = () => (
   <div className="stage">
     <Welcome />
+    <div>Circular Menu</div>
     <Box>
       <CircularMenu
         spinDirection={'left'}
@@ -30,16 +31,18 @@ const Stage = () => (
         buttonColor={'#0bc46f'}
         options={options}
         startAngle={0}
+        onChange={w => alert(w)}
       />
     </Box>
     <Box>
-      <CircularMenu halfSpin />
+      <CircularMenu halfSpin onChange={w => alert(w)} />
     </Box>
     <Box>
       <CircularMenu
         buttonColor={'#5e6fd1'}
         buttonIcon={'fas fa-plus'}
         startAngle={0}
+        onChange={w => alert(w)}
       />
     </Box>
     <Box>
@@ -48,6 +51,7 @@ const Stage = () => (
         buttonColor={'#495056'}
         options={options2}
         startAngle={90}
+        onChange={w => alert(w)}
       />
     </Box>
   </div>

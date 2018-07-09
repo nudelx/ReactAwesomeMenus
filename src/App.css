@@ -73,3 +73,6 @@ div.box {
 .welcome h2 {
   font-size: 14px;
 }
+.welcome a {
+  color: inherit;
+}

@@ -13,6 +13,7 @@ class SpinningMenu extends React.Component {
     this.startAlpha = props.startAngle
     this.currentAlpha = this.startAlpha
   }
+
   calculatePosition(alpha) {
     return {
       x: this.radius * Math.cos(alpha / this.radian) + this.offSet,
@@ -53,11 +54,7 @@ class SpinningMenu extends React.Component {
             )
           })}
         </div>
-        <button
-          href="#"
-          onClick={this.onclick}
-          className={`center fa fa-th fa-2x`}
-        />
+        <button onClick={this.onclick} className={`center fa fa-th fa-2x`} />
       </div>
     )
   }

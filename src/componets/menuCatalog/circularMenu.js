@@ -11,10 +11,10 @@ class CircularMenu extends Component {
     this.radius = 120
     this.total = props.options.length
     this.optimalAlphaStep = 35
-    this.startAlpha = props.startAׁngle
+    this.startAlpha = props.startAngle
     this.currentAlpha = this.startAlpha
     this.direction = props.itemsDirection === 'right' ? 1 : -1
-    this.radian = (180 / Math.PI)
+    this.radian = 180 / Math.PI
   }
 
   componentDidUpdate(prevProps) {
@@ -106,7 +106,7 @@ CircularMenu.defaultProps = {
     { name: 'empire', class: 'fa-empire' },
     { name: 'react', class: 'fa-react' }
   ],
-  halfSpin: true,
+  halfSpin: false,
   spinDirection: 'right',
   itemsDirection: 'right',
   buttonAfIcon: 'fa-bars',

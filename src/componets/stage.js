@@ -1,6 +1,8 @@
 import React from 'react'
 import Box from './box'
+import Row from './row'
 import CircularMenu from './menuCatalog/circularMenu'
+import SpinningMenu from './menuCatalog/spinningMenu'
 import Welcome from './welcome'
 const options = [
   { class: 'far fa-grin-beam', name: 'aa' },
@@ -22,38 +24,45 @@ const options2 = [
 const Stage = () => (
   <div className="stage">
     <Welcome />
-    <div>Circular Menu</div>
-    <Box>
-      <CircularMenu
-        spinDirection={'left'}
-        itemsDirection={'left'}
-        buttonIcon={'fas fa-cannabis'}
-        buttonColor={'#0bc46f'}
-        options={options}
-        startAngle={0}
-        onChange={w => alert(w)}
-      />
-    </Box>
-    <Box>
-      <CircularMenu halfSpin onChange={w => alert(w)} />
-    </Box>
-    <Box>
-      <CircularMenu
-        buttonColor={'#5e6fd1'}
-        buttonIcon={'fas fa-plus'}
-        startAngle={0}
-        onChange={w => alert(w)}
-      />
-    </Box>
-    <Box>
-      <CircularMenu
-        buttonIcon={'fab fa-empire'}
-        buttonColor={'#495056'}
-        options={options2}
-        startAngle={90}
-        onChange={w => alert(w)}
-      />
-    </Box>
+    <Row title={'Circular Menu'}>
+      <Box>
+        <CircularMenu
+          spinDirection={'left'}
+          itemsDirection={'left'}
+          buttonIcon={'fas fa-cannabis'}
+          buttonColor={'#0bc46f'}
+          options={options}
+          startAngle={0}
+          onChange={w => alert(w)}
+        />
+      </Box>
+      <Box>
+        <CircularMenu halfSpin onChange={w => alert(w)} />
+      </Box>
+      <Box>
+        <CircularMenu
+          buttonColor={'#5e6fd1'}
+          buttonIcon={'fas fa-plus'}
+          startAngle={0}
+          onChange={w => alert(w)}
+        />
+      </Box>
+      <Box>
+        <CircularMenu
+          buttonIcon={'fab fa-empire'}
+          buttonColor={'#495056'}
+          options={options2}
+          startAngle={90}
+          onChange={w => alert(w)}
+        />
+      </Box>
+    </Row>
+
+    <Row title={'Circular Menu'}>
+      <Box>
+        <SpinningMenu />
+      </Box>
+    </Row>
   </div>
 )
 

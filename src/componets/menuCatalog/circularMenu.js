@@ -51,7 +51,7 @@ class CircularMenu extends Component {
       options,
       spinDirection,
       halfSpin,
-      buttonAfIcon,
+      buttonIcon,
       buttonColor,
       menuColor
     } = this.props
@@ -69,7 +69,7 @@ class CircularMenu extends Component {
         }}>
         <FloatingButton
           onclick={this.onclick}
-          buttonAfIcon={buttonAfIcon}
+          buttonIcon={buttonIcon}
           bgColor={buttonColor}
         />
         <Menu>
@@ -81,7 +81,7 @@ class CircularMenu extends Component {
                 id={item.name}
                 href="#"
                 onClick={this.onSelect}
-                className={`menu-item fab ${item.class} ${
+                className={`menu-item ${item.class} ${
                   active ? 'fadein' : 'fadeout'
                 }`}
                 style={{
@@ -98,18 +98,18 @@ class CircularMenu extends Component {
 
 CircularMenu.defaultProps = {
   options: [
-    { name: 'facebook', class: 'fa-facebook' },
-    { name: 'twitter', class: 'fa-twitter' },
-    { name: 'google', class: 'fa-google-plus' },
-    { name: 'linkedin', class: 'fa-linkedin' },
-    { name: 'rebel', class: 'fa-rebel' },
-    { name: 'empire', class: 'fa-empire' },
-    { name: 'react', class: 'fa-react' }
+    { name: 'facebook', class: 'fab fa-facebook' },
+    { name: 'twitter', class: 'fab fa-twitter' },
+    { name: 'google', class: 'fab fa-google-plus' },
+    { name: 'linkedin', class: 'fab fa-linkedin' },
+    { name: 'rebel', class: 'fab fa-rebel' },
+    { name: 'empire', class: 'fab fa-empire' },
+    { name: 'react', class: 'fab fa-react' }
   ],
   halfSpin: false,
   spinDirection: 'right',
   itemsDirection: 'right',
-  buttonAfIcon: 'fa-bars',
+  buttonIcon: 'fas fa-bars',
   buttonColor: '#FF86B2',
   startAngle: -90
 }
@@ -118,9 +118,10 @@ CircularMenu.propTypes = {
   onChange: PropTypes.func,
   halfSpin: PropTypes.bool,
   spinDirection: PropTypes.string,
+  buttonColor: PropTypes.string,
   itemsDirection: PropTypes.string,
-  buttonAfIcon: PropTypes.string,
-  startAׁngle: PropTypes.number,
+  buttonIcon: PropTypes.string,
+  startAngle: PropTypes.number,
   options: PropTypes.arrayOf(
     PropTypes.shape({
       name: PropTypes.string,

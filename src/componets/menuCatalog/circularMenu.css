@@ -109,6 +109,7 @@
 
 .circular-menu .menu-item:hover {
   background-color: hsla(0, 0%, 0%, 0.3);
+  cursor: pointer;
 }
 
 .circular-menu.active .menu-item {

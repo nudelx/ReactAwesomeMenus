@@ -1,21 +1,31 @@
+html {
+  background-color: #596777;
+}
 .App {
   text-align: center;
 }
-
+.logo-wrapper {
+  margin-top: 10px;
+}
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+  height: 40px;
+  display: inline-block;
+  vertical-align: text-top;
 }
 
 .App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
+  background-color: #2a3138;
+  height: 70px;
   color: white;
+  text-align: left;
+  overflow: hidden;
 }
 
 .App-title {
-  font-size: 1.5em;
+  font-size: 18px;
+  display: inline-block;
+  vertical-align: top;
 }
 
 .App-intro {
@@ -35,10 +45,31 @@ div.stage {
   padding: 15px;
 }
 div.box {
-  min-width: 350px;
-  min-height: 350px;
+  min-width: 330px;
+  min-height: 330px;
   display: inline-block;
-  border: 1px solid #ccc;
-  line-height: 350px;
+  border: 1px solid #697a8e;
+  line-height: 330px;
   position: relative;
+  vertical-align: top;
+  margin: 3px;
+}
+
+.left-down {
+  position: relative;
+}
+.left-down #circularMenu {
+  display: inline;
+  position: absolute;
+  bottom: 0px;
+  right: 0px;
+}
+
+.welcome {
+  margin: 50px 0;
+  color: #e3e9ef;
+}
+
+.welcome h2 {
+  font-size: 14px;
 }

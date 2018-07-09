@@ -14,6 +14,7 @@ class CircularMenu extends Component {
     this.startAlpha = props.startAׁngle
     this.currentAlpha = this.startAlpha
     this.direction = props.itemsDirection === 'right' ? 1 : -1
+    this.radian = (180 / Math.PI)
   }
 
   componentDidUpdate(prevProps) {
@@ -32,8 +33,8 @@ class CircularMenu extends Component {
 
   calculatePosition(alpha) {
     return {
-      x: this.radius * Math.cos(alpha / (180 / Math.PI)),
-      y: this.radius * Math.sin(alpha / (180 / Math.PI))
+      x: this.radius * Math.cos(alpha / this.radian),
+      y: this.radius * Math.sin(alpha / this.radian)
     }
   }
 
@@ -110,7 +111,7 @@ CircularMenu.defaultProps = {
   itemsDirection: 'right',
   buttonAfIcon: 'fa-bars',
   buttonColor: '#FF86B2',
-  startAׁngle: -90
+  startAngle: -90
 }
 
 CircularMenu.propTypes = {

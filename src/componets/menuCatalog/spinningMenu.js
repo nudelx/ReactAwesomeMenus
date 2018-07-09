@@ -14,7 +14,7 @@ class SpinningMenu extends React.Component {
     this.currentAlpha = this.startAlpha
   }
 
-  calculatePosition(alpha) {
+  calculatePosition(alpha, radius, offSet) {
     return {
       x: this.radius * Math.cos(alpha / this.radian) + this.offSet,
       y: this.radius * Math.sin(alpha / this.radian) + this.offSet

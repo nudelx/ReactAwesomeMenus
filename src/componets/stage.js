@@ -58,7 +58,7 @@ const Stage = () => (
       </Box>
     </Row>
 
-    <Row title={'Circular Menu'}>
+    <Row title={'Spinning Menu'}>
       <Box>
         <SpinningMenu />
       </Box>

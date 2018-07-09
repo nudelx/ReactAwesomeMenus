@@ -5,17 +5,18 @@ class SpinningMenu extends React.Component {
     super(props)
     this.state = { active: false }
     this.radius = 100
-    this.total = props.options.length
+    this.radian = 180 / Math.PI
     this.optimalAlphaStep = 35
+    this.offSet = 125
+    this.direction = 1
+    this.total = props.options.length
     this.startAlpha = props.startAngle
     this.currentAlpha = this.startAlpha
-    this.radian = 180 / Math.PI
-    this.direction = 1
   }
   calculatePosition(alpha) {
     return {
-      x: this.radius * Math.cos(alpha / this.radian) + 120,
-      y: this.radius * Math.sin(alpha / this.radian) + 120
+      x: this.radius * Math.cos(alpha / this.radian) + this.offSet,
+      y: this.radius * Math.sin(alpha / this.radian) + this.offSet
     }
   }
 
@@ -26,6 +27,8 @@ class SpinningMenu extends React.Component {
     this.currentAlpha += this.optimalAlphaStep * this.direction
     return position
   }
+
+  onSelect = e => this.setState({ active: false, selected: e.target.id })
 
   onclick = () => this.setState({ active: !this.state.active })
   render() {
@@ -53,7 +56,7 @@ class SpinningMenu extends React.Component {
         <button
           href="#"
           onClick={this.onclick}
-          className={`center fa fa-th fa-2x `}
+          className={`center fa fa-th fa-2x`}
         />
       </div>
     )
@@ -68,7 +71,7 @@ SpinningMenu.defaultProps = {
     { name: 'rebel', class: 'fa fa-music fa-2x' },
     { name: 'empire', class: 'fa fa-user fa-2x' },
     { name: 'react1', class: 'fa fa-star fa-2x' },
-    { name: 'react2', class: 'fa fa-star fa-2x' }
+    { name: 'react2', class: 'fas fa-chess-knight fa-2x' }
   ],
   startAngle: -90
 }

@@ -1,7 +1,5 @@
 import './App.css'
-
 import React, { Component } from 'react'
-
 import Header from './componets/header'
 import Stage from './componets/stage'
 import TitleCard from './componets/titleCard'

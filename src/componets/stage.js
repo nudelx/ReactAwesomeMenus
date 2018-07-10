@@ -1,5 +1,4 @@
 import React from 'react'
-
 import Box from './box'
 import Card from './card'
 import CircularMenu from './menuCatalog/circularMenu'

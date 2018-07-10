@@ -1,6 +1,8 @@
 import React from 'react'
 import Box from './box'
+import Row from './row'
 import CircularMenu from './menuCatalog/circularMenu'
+import SpinningMenu from './menuCatalog/spinningMenu'
 import Welcome from './welcome'
 const options = [
   { class: 'far fa-grin-beam', name: 'aa' },
@@ -22,38 +24,69 @@ const options2 = [
 const Stage = () => (
   <div className="stage">
     <Welcome />
-    <div>Circular Menu</div>
-    <Box>
-      <CircularMenu
-        spinDirection={'left'}
-        itemsDirection={'left'}
-        buttonIcon={'fas fa-cannabis'}
-        buttonColor={'#0bc46f'}
-        options={options}
-        startAngle={0}
-        onChange={w => alert(w)}
-      />
-    </Box>
-    <Box>
-      <CircularMenu halfSpin onChange={w => alert(w)} />
-    </Box>
-    <Box>
-      <CircularMenu
-        buttonColor={'#5e6fd1'}
-        buttonIcon={'fas fa-plus'}
-        startAngle={0}
-        onChange={w => alert(w)}
-      />
-    </Box>
-    <Box>
-      <CircularMenu
-        buttonIcon={'fab fa-empire'}
-        buttonColor={'#495056'}
-        options={options2}
-        startAngle={90}
-        onChange={w => alert(w)}
-      />
-    </Box>
+    <Row title={'Circular Menu'}>
+      <Box>
+        <CircularMenu
+          spinDirection={'left'}
+          itemsDirection={'left'}
+          buttonIcon={'fas fa-cannabis'}
+          buttonColor={'#0bc46f'}
+          options={options}
+          startAngle={0}
+          onChange={w => alert(w)}
+        />
+      </Box>
+      <Box>
+        <CircularMenu halfSpin onChange={w => alert(w)} />
+      </Box>
+      <Box>
+        <CircularMenu
+          buttonColor={'#5e6fd1'}
+          buttonIcon={'fas fa-plus'}
+          startAngle={0}
+          onChange={w => alert(w)}
+        />
+      </Box>
+      <Box>
+        <CircularMenu
+          buttonIcon={'fab fa-empire'}
+          buttonColor={'#495056'}
+          options={options2}
+          startAngle={90}
+          onChange={w => alert(w)}
+        />
+      </Box>
+    </Row>
+
+    <Row title={'Spinning Menu'}>
+      <Box>
+        <SpinningMenu />
+      </Box>
+      <Box>
+        <SpinningMenu
+          btnIcon={'fab fa-rebel fa-2x'}
+          btnBgColor={'#c48217'}
+          ringBgColor={'#dba34a'}
+          itemColor={'#7c5212'}
+        />
+      </Box>
+      <Box>
+        <SpinningMenu
+          btnborderColor={'#871414'}
+          btnBgColor={'#d86d68'}
+          btnIcon={'fab fa-empire fa-2x'}
+          ringBgColor={'#c97f78'}
+        />
+      </Box>
+      <Box>
+        <SpinningMenu
+          btnBgColor={'#4da556'}
+          btnIcon={'fab fa-jedi-order fa-2x'}
+          ringBgColor={'#9ac495'}
+          itemColor={'#087040'}
+        />
+      </Box>
+    </Row>
   </div>
 )
 

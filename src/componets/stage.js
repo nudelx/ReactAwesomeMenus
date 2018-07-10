@@ -63,13 +63,28 @@ const Stage = () => (
         <SpinningMenu />
       </Box>
       <Box>
-        <SpinningMenu btnIcon={'fab fa-rebel fa-2x'} />
+        <SpinningMenu
+          btnIcon={'fab fa-rebel fa-2x'}
+          btnBgColor={'#c48217'}
+          ringBgColor={'#dba34a'}
+          itemColor={'#7c5212'}
+        />
       </Box>
       <Box>
-        <SpinningMenu btnIcon={'fab fa-empire fa-2x'} />
+        <SpinningMenu
+          btnborderColor={'#871414'}
+          btnBgColor={'#d86d68'}
+          btnIcon={'fab fa-empire fa-2x'}
+          ringBgColor={'#c97f78'}
+        />
       </Box>
       <Box>
-        <SpinningMenu btnIcon={'fab fa-jedi-order fa-2x'} />
+        <SpinningMenu
+          btnBgColor={'#4da556'}
+          btnIcon={'fab fa-jedi-order fa-2x'}
+          ringBgColor={'#9ac495'}
+          itemColor={'#087040'}
+        />
       </Box>
     </Row>
   </div>

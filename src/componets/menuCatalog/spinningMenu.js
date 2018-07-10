@@ -106,7 +106,7 @@ SpinningMenu.propTypes = {
   btnborderColor: PropTypes.string,
   btnIcon: PropTypes.string,
   itemColor: PropTypes.string,
-  ringColor: PropTypes.string
+  ringBgColor: PropTypes.string
 }
 
 export default SpinningMenu

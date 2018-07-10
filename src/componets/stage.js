@@ -1,9 +1,9 @@
 import React from 'react'
 import Box from './box'
-import Row from './row'
+import Card from './card'
 import CircularMenu from './menuCatalog/circularMenu'
 import SpinningMenu from './menuCatalog/spinningMenu'
-import Welcome from './welcome'
+
 const options = [
   { class: 'far fa-grin-beam', name: 'aa' },
   { class: 'far fa-grin-beam-sweat', name: 'bb' },
@@ -23,9 +23,8 @@ const options2 = [
 
 const Stage = () => (
   <div className="stage">
-    <Welcome />
-    <Row title={'Circular Menu'}>
-      <Box>
+    <Card title={'Circular Menu'}>
+      <Box seporator>
         <CircularMenu
           spinDirection={'left'}
           itemsDirection={'left'}
@@ -36,10 +35,10 @@ const Stage = () => (
           onChange={w => alert(w)}
         />
       </Box>
-      <Box>
+      <Box seporator>
         <CircularMenu halfSpin onChange={w => alert(w)} />
       </Box>
-      <Box>
+      <Box seporator>
         <CircularMenu
           buttonColor={'#5e6fd1'}
           buttonIcon={'fas fa-plus'}
@@ -56,13 +55,13 @@ const Stage = () => (
           onChange={w => alert(w)}
         />
       </Box>
-    </Row>
+    </Card>
 
-    <Row title={'Spinning Menu'}>
-      <Box>
+    <Card title={'Spinning Menu'}>
+      <Box seporator>
         <SpinningMenu />
       </Box>
-      <Box>
+      <Box seporator>
         <SpinningMenu
           btnIcon={'fab fa-rebel fa-2x'}
           btnBgColor={'#c48217'}
@@ -70,7 +69,7 @@ const Stage = () => (
           itemColor={'#7c5212'}
         />
       </Box>
-      <Box>
+      <Box seporator>
         <SpinningMenu
           btnborderColor={'#871414'}
           btnBgColor={'#d86d68'}
@@ -86,7 +85,7 @@ const Stage = () => (
           itemColor={'#087040'}
         />
       </Box>
-    </Row>
+    </Card>
   </div>
 )
 

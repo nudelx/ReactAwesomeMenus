@@ -13,16 +13,16 @@ const Welcome = () => (
       by Alex Nudelman (<a href="https://github.com/nudelx">nudelx</a>)
       <div>
         <a href="https://github.com/nudelx/ReactAwesomeMenus">
-          <i class="fas fa-code" />
+          <i className="fas fa-code" />
         </a>{' '}
         <a href="https://github.com/nudelx">
-          <i class="fab fa-github" />
+          <i className="fab fa-github" />
         </a>{' '}
         <a href="https://twitter.com/_nudelx_">
-          <i class="fab fa-twitter" />
+          <i className="fab fa-twitter" />
         </a>{' '}
         <a href="https://www.linkedin.com/in/alexnudelm/">
-          <i class="fab fa-linkedin" />
+          <i className="fab fa-linkedin" />
         </a>{' '}
       </div>
     </h2>

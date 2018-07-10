@@ -62,6 +62,15 @@ const Stage = () => (
       <Box>
         <SpinningMenu />
       </Box>
+      <Box>
+        <SpinningMenu btnIcon={'fab fa-rebel fa-2x'} />
+      </Box>
+      <Box>
+        <SpinningMenu btnIcon={'fab fa-empire fa-2x'} />
+      </Box>
+      <Box>
+        <SpinningMenu btnIcon={'fab fa-jedi-order fa-2x'} />
+      </Box>
     </Row>
   </div>
 )

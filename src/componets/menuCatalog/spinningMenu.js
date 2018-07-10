@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import './spinningMenu.css'
 class SpinningMenu extends React.Component {
   constructor(props) {
@@ -34,10 +35,17 @@ class SpinningMenu extends React.Component {
   onclick = () => this.setState({ active: !this.state.active })
   render() {
     const { active } = this.state
-    const { options } = this.props
+    const {
+      options,
+      btnBgColor,
+      btnborderColor,
+      btnIcon,
+      itemColor,
+      ringBgColor
+    } = this.props
     return (
       <div className={`circle ${active ? 'open' : ''}`}>
-        <div className="ring">
+        <div className="ring" style={{ backgroundColor: ringBgColor }}>
           {options.map((item, index) => {
             const { x, y } = this.calculateAlpha(index)
             return (
@@ -48,29 +56,57 @@ class SpinningMenu extends React.Component {
                 onClick={this.onSelect}
                 className={`menuItem ${item.class}`}
                 style={{
-                  transform: `translate(${x}px, ${y}px)`
+                  transform: `translate(${x}px, ${y}px)`,
+                  color: itemColor
                 }}
               />
             )
           })}
         </div>
-        <button onClick={this.onclick} className={`center fa fa-th fa-2x`} />
+        <div
+          onClick={this.onclick}
+          className={`center ${btnIcon}`}
+          style={{
+            backgroundColor: btnBgColor,
+            borderColor: btnborderColor
+          }}
+        />
       </div>
     )
   }
 }
 SpinningMenu.defaultProps = {
   options: [
-    { name: 'facebook', class: 'fa fa-home fa-2x' },
-    { name: 'twitter', class: 'fa fa-comment fa-2x' },
-    { name: 'google', class: 'fa fa-play fa-2x' },
-    { name: 'linkedin', class: 'fa fa-camera fa-2x' },
-    { name: 'rebel', class: 'fa fa-music fa-2x' },
-    { name: 'empire', class: 'fa fa-user fa-2x' },
-    { name: 'react1', class: 'fa fa-star fa-2x' },
-    { name: 'react2', class: 'fas fa-chess-knight fa-2x' }
+    { name: 'home', class: 'fa fa-home fa-2x' },
+    { name: 'comment', class: 'fa fa-comment fa-2x' },
+    { name: 'play', class: 'fa fa-play fa-2x' },
+    { name: 'camera', class: 'fa fa-camera fa-2x' },
+    { name: 'music', class: 'fa fa-music fa-2x' },
+    { name: 'user', class: 'fa fa-user fa-2x' },
+    { name: 'empire', class: 'fab fa-empire fa-2x' },
+    { name: 'knight', class: 'fa fa-bell fa-2x' }
   ],
-  startAngle: -90
+  startAngle: -90,
+  btnBgColor: 'rgba(255, 255, 255, 0.3)',
+  btnborderColor: '#ffffff',
+  btnIcon: 'fa fa-th fa-2x',
+  itemColor: '#eeeeee',
+  ringBgColor: 'rgba(0, 0, 0, 0.5)'
+}
+
+SpinningMenu.propTypes = {
+  options: PropTypes.arrayOf(
+    PropTypes.shape({
+      name: PropTypes.string,
+      class: PropTypes.string,
+      value: PropTypes.string
+    })
+  ),
+  btnBgColor: PropTypes.string,
+  btnborderColor: PropTypes.string,
+  btnIcon: PropTypes.string,
+  itemColor: PropTypes.string,
+  ringColor: PropTypes.string
 }
 
 export default SpinningMenu

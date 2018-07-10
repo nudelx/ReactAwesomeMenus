@@ -2,7 +2,7 @@ import React from 'react'
 
 const Row = ({ children, title }) => (
   <div className="row">
-    <div>{title}</div>
+    <div className="row-title">{title}</div>
     {children}{' '}
   </div>
 )

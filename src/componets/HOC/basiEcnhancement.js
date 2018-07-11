@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-// import PropTypes from 'prop-types'
 
 function getDisplayName(WrappedComponent) {
   return WrappedComponent.displayName || WrappedComponent.name || 'Component'
@@ -24,6 +23,7 @@ const enhanceWithBasic = WrappedComponent => {
     }
 
     onclick = () => this.setState({ active: !this.state.active })
+
     onSelect = e => this.setState({ active: false, selected: e.target.id })
 
     calculatePosition = ({ alpha, radius, radian, offSet = 0 }) => {

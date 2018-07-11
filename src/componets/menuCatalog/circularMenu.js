@@ -13,8 +13,7 @@ class CircularMenu extends Component {
       optimalAlphaStep: 35,
       startAlpha: props.startAngle,
       currentAlpha: props.startAngle,
-      direction: props.itemsDirection === 'right' ? 1 : -1,
-      radian: 180 / Math.PI
+      direction: props.itemsDirection === 'right' ? 1 : -1
     }
   }
 

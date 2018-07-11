@@ -1,5 +1,5 @@
 import React from 'react'
-import enhanceWithBasic from './HOC/basiEcnhancement'
+import enhanceWithBasic from './HOC/baseEnhancement'
 import Box from './box'
 import Card from './card'
 import CircularMenu from './menuCatalog/circularMenu'

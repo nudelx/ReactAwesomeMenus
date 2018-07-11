@@ -25,71 +25,65 @@ const options2 = [
 const CircularMenuEnhanced = enhanceWithBasic(CircularMenu)
 const SpinningMenuEnhanced = enhanceWithBasic(SpinningMenu)
 
+const row1 = [
+  <CircularMenuEnhanced
+    spinDirection={'left'}
+    itemsDirection={'left'}
+    btnIcon={'fas fa-cannabis'}
+    btnColor={'#0bc46f'}
+    options={options}
+    startAngle={0}
+    onChange={w => alert(w)}
+  />,
+  <CircularMenuEnhanced halfSpin onChange={w => alert(w)} />,
+  <CircularMenuEnhanced
+    btnColor={'#5e6fd1'}
+    btnIcon={'fas fa-plus'}
+    startAngle={0}
+    onChange={w => alert(w)}
+  />,
+  <CircularMenuEnhanced
+    btnIcon={'fab fa-empire'}
+    btnColor={'#495056'}
+    options={options2}
+    startAngle={90}
+    onChange={w => alert(w)}
+  />
+]
+
+const row2 = [
+  <SpinningMenuEnhanced />,
+  <SpinningMenuEnhanced
+    btnIcon={'fab fa-rebel fa-2x'}
+    btnBgColor={'#c48217'}
+    ringBgColor={'#dba34a'}
+    itemColor={'#7c5212'}
+  />,
+  <SpinningMenuEnhanced
+    btnborderColor={'#871414'}
+    btnBgColor={'#d86d68'}
+    btnIcon={'fab fa-empire fa-2x'}
+    ringBgColor={'#c97f78'}
+  />,
+  <SpinningMenuEnhanced
+    btnBgColor={'#4da556'}
+    btnIcon={'fab fa-jedi-order fa-2x'}
+    ringBgColor={'#9ac495'}
+    itemColor={'#087040'}
+  />
+]
+
+const rowLoop = row =>
+  row1.map((Item, i) => (
+    <Box key={i} seporator={!!i}>
+      {Item}
+    </Box>
+  ))
+
 const Stage = () => (
   <div className="stage">
-    <Card title={'Circular Menu'}>
-      <Box seporator>
-        <CircularMenuEnhanced
-          spinDirection={'left'}
-          itemsDirection={'left'}
-          btnIcon={'fas fa-cannabis'}
-          btnColor={'#0bc46f'}
-          options={options}
-          startAngle={0}
-          onChange={w => alert(w)}
-        />
-      </Box>
-      <Box seporator>
-        <CircularMenuEnhanced halfSpin onChange={w => alert(w)} />
-      </Box>
-      <Box seporator>
-        <CircularMenuEnhanced
-          btnColor={'#5e6fd1'}
-          btnIcon={'fas fa-plus'}
-          startAngle={0}
-          onChange={w => alert(w)}
-        />
-      </Box>
-      <Box>
-        <CircularMenuEnhanced
-          btnIcon={'fab fa-empire'}
-          btnColor={'#495056'}
-          options={options2}
-          startAngle={90}
-          onChange={w => alert(w)}
-        />
-      </Box>
-    </Card>
-
-    <Card title={'Spinning Menu'}>
-      <Box seporator>
-        <SpinningMenuEnhanced />
-      </Box>
-      <Box seporator>
-        <SpinningMenuEnhanced
-          btnIcon={'fab fa-rebel fa-2x'}
-          btnBgColor={'#c48217'}
-          ringBgColor={'#dba34a'}
-          itemColor={'#7c5212'}
-        />
-      </Box>
-      <Box seporator>
-        <SpinningMenuEnhanced
-          btnborderColor={'#871414'}
-          btnBgColor={'#d86d68'}
-          btnIcon={'fab fa-empire fa-2x'}
-          ringBgColor={'#c97f78'}
-        />
-      </Box>
-      <Box>
-        <SpinningMenuEnhanced
-          btnBgColor={'#4da556'}
-          btnIcon={'fab fa-jedi-order fa-2x'}
-          ringBgColor={'#9ac495'}
-          itemColor={'#087040'}
-        />
-      </Box>
-    </Card>
+    <Card title={'Circular Menu'}>{rowLoop(row1)}</Card>
+    <Card title={'Spinning Menu'}>{rowLoop(row2)}</Card>
   </div>
 )
 

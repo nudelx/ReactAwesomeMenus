@@ -1,4 +1,5 @@
 import React from 'react'
+import enhanceWithBasic from './HOC/baseEnhancement'
 import Box from './box'
 import Card from './card'
 import CircularMenu from './menuCatalog/circularMenu'
@@ -21,35 +22,38 @@ const options2 = [
   { class: 'fab fa-jedi-order', name: 'ff' }
 ]
 
+const CircularMenuEnhanced = enhanceWithBasic(CircularMenu)
+const SpinningMenuEnhanced = enhanceWithBasic(SpinningMenu)
+
 const Stage = () => (
   <div className="stage">
     <Card title={'Circular Menu'}>
       <Box seporator>
-        <CircularMenu
+        <CircularMenuEnhanced
           spinDirection={'left'}
           itemsDirection={'left'}
-          buttonIcon={'fas fa-cannabis'}
-          buttonColor={'#0bc46f'}
+          btnIcon={'fas fa-cannabis'}
+          btnColor={'#0bc46f'}
           options={options}
           startAngle={0}
           onChange={w => alert(w)}
         />
       </Box>
       <Box seporator>
-        <CircularMenu halfSpin onChange={w => alert(w)} />
+        <CircularMenuEnhanced halfSpin onChange={w => alert(w)} />
       </Box>
       <Box seporator>
-        <CircularMenu
-          buttonColor={'#5e6fd1'}
-          buttonIcon={'fas fa-plus'}
+        <CircularMenuEnhanced
+          btnColor={'#5e6fd1'}
+          btnIcon={'fas fa-plus'}
           startAngle={0}
           onChange={w => alert(w)}
         />
       </Box>
       <Box>
-        <CircularMenu
-          buttonIcon={'fab fa-empire'}
-          buttonColor={'#495056'}
+        <CircularMenuEnhanced
+          btnIcon={'fab fa-empire'}
+          btnColor={'#495056'}
           options={options2}
           startAngle={90}
           onChange={w => alert(w)}
@@ -59,10 +63,10 @@ const Stage = () => (
 
     <Card title={'Spinning Menu'}>
       <Box seporator>
-        <SpinningMenu />
+        <SpinningMenuEnhanced />
       </Box>
       <Box seporator>
-        <SpinningMenu
+        <SpinningMenuEnhanced
           btnIcon={'fab fa-rebel fa-2x'}
           btnBgColor={'#c48217'}
           ringBgColor={'#dba34a'}
@@ -70,7 +74,7 @@ const Stage = () => (
         />
       </Box>
       <Box seporator>
-        <SpinningMenu
+        <SpinningMenuEnhanced
           btnborderColor={'#871414'}
           btnBgColor={'#d86d68'}
           btnIcon={'fab fa-empire fa-2x'}
@@ -78,7 +82,7 @@ const Stage = () => (
         />
       </Box>
       <Box>
-        <SpinningMenu
+        <SpinningMenuEnhanced
           btnBgColor={'#4da556'}
           btnIcon={'fab fa-jedi-order fa-2x'}
           ringBgColor={'#9ac495'}

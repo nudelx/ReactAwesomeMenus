@@ -60,7 +60,7 @@ const Stage = () => (
       </Box>
     </Card>
 
-    <Card title={'Spinning Menu'}>
+    {/* <Card title={'Spinning Menu'}>
       <Box seporator>
         <SpinningMenu />
       </Box>
@@ -88,7 +88,7 @@ const Stage = () => (
           itemColor={'#087040'}
         />
       </Box>
-    </Card>
+    </Card> */}
   </div>
 )
 

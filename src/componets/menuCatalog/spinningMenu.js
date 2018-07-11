@@ -6,28 +6,12 @@ class SpinningMenu extends React.Component {
     super(props)
     this.state = { active: false }
     this.radius = 100
-    this.radian = 180 / Math.PI
     this.optimalAlphaStep = 35
     this.offSet = 125
     this.direction = 1
     this.total = props.options.length
     this.startAlpha = props.startAngle
     this.currentAlpha = this.startAlpha
-  }
-
-  calculatePosition(alpha, radius, offSet) {
-    return {
-      x: this.radius * Math.cos(alpha / this.radian) + this.offSet,
-      y: this.radius * Math.sin(alpha / this.radian) + this.offSet
-    }
-  }
-
-  calculateAlpha(index) {
-    this.currentAlpha = index === 0 ? this.startAlpha : this.currentAlpha
-    this.currentAlpha = this.currentAlpha >= 360 ? 0 : this.currentAlpha
-    const position = this.calculatePosition(this.currentAlpha)
-    this.currentAlpha += this.optimalAlphaStep * this.direction
-    return position
   }
 
   onSelect = e => this.setState({ active: false, selected: e.target.id })
@@ -41,13 +25,25 @@ class SpinningMenu extends React.Component {
       btnborderColor,
       btnIcon,
       itemColor,
-      ringBgColor
+      ringBgColor,
+      calculatePosition,
+      calculateAlpha
     } = this.props
     return (
       <div className={`circle ${active ? 'open' : ''}`}>
         <div className="ring" style={{ backgroundColor: ringBgColor }}>
           {options.map((item, index) => {
-            const { x, y } = this.calculateAlpha(index)
+            const alpha = calculateAlpha({
+              index,
+              currentAlpha: this.currentAlpha,
+              startAlpha: this.startAlpha
+            })
+            const { x, y } = calculatePosition({
+              alpha,
+              radius: this.radius,
+              offSet: this.offSet
+            })
+            this.currentAlpha += this.optimalAlphaStep * this.direction
             return (
               <button
                 key={`${item.name}_${index}`}

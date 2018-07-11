@@ -10,28 +10,44 @@ const enhanceWithBasic = WrappedComponent => {
     constructor(props) {
       super(props)
       this.state = { active: false }
-
-      this.radius = 120
-      this.total = props.options.length
-      this.optimalAlphaStep = 35
-      this.startAlpha = props.startAngle
-      this.currentAlpha = this.startAlpha
-      this.direction = props.itemsDirection === 'right' ? 1 : -1
       this.radian = 180 / Math.PI
     }
     onclick = () => this.setState({ active: !this.state.active })
     onSelect = e => this.setState({ active: false, selected: e.target.id })
-    calculatePosition(alpha) {
+
+    calculatePosition = ({ alpha, radius, radian, offSet = 0 }) => {
       return {
-        x: this.radius * Math.cos(alpha / this.radian),
-        y: this.radius * Math.sin(alpha / this.radian)
+        x: radius * Math.cos(alpha / this.radian) + offSet,
+        y: radius * Math.sin(alpha / this.radian) + offSet
       }
     }
-    calculateAlpha = index => {
-      this.currentAlpha = index === 0 ? this.startAlpha : this.currentAlpha
-      this.currentAlpha = this.currentAlpha >= 360 ? 0 : this.currentAlpha
-      const position = this.calculatePosition(this.currentAlpha)
-      this.currentAlpha += this.optimalAlphaStep * this.direction
+    calculateAlpha = ({ index, currentAlpha, startAlpha }) => {
+      currentAlpha = index === 0 ? startAlpha : currentAlpha
+      currentAlpha = currentAlpha >= 360 ? 0 : currentAlpha
+      return currentAlpha
+    }
+
+    calculateNextStep = ({
+      index,
+      currentAlpha,
+      startAlpha,
+      radius,
+      offSet,
+      optimalAlphaStep,
+      direction
+    }) => {
+      const alpha = this.calculateAlpha({
+        index,
+        currentAlpha,
+        startAlpha
+      })
+
+      const position = this.calculatePosition({
+        alpha,
+        radius,
+        offSet
+      })
+      position.nextAlpha = alpha + optimalAlphaStep * direction
       return position
     }
 
@@ -42,7 +58,7 @@ const enhanceWithBasic = WrappedComponent => {
           {...this.state}
           onClick={this.onclick}
           onSelect={this.onSelect}
-          calculateAlpha={this.calculateAlpha}
+          calculateNextStep={this.calculateNextStep}
         />
       )
     }
@@ -52,23 +68,6 @@ const enhanceWithBasic = WrappedComponent => {
     WrappedComponent
   )})`
 
-  WithBasicEnhancement.defaultProps = {
-    options: [
-      { name: 'facebook', class: 'fab fa-facebook' },
-      { name: 'twitter', class: 'fab fa-twitter' },
-      { name: 'google', class: 'fab fa-google-plus' },
-      { name: 'linkedin', class: 'fab fa-linkedin' },
-      { name: 'rebel', class: 'fab fa-rebel' },
-      { name: 'empire', class: 'fab fa-empire' },
-      { name: 'react', class: 'fab fa-react' }
-    ],
-    halfSpin: false,
-    spinDirection: 'right',
-    itemsDirection: 'right',
-    btnIcon: 'fas fa-bars',
-    btnColor: '#FF86B2',
-    startAngle: -90
-  }
   return WithBasicEnhancement
 }
 

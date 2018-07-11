@@ -12,6 +12,17 @@ const enhanceWithBasic = WrappedComponent => {
       this.state = { active: false }
       this.radian = 180 / Math.PI
     }
+
+    componentDidUpdate(prevProps, prevState) {
+      const { onChange } = this.props
+      if (
+        typeof onChange === 'function' &&
+        this.state.selected !== prevState.selected
+      ) {
+        onChange(this.state.selected)
+      }
+    }
+
     onclick = () => this.setState({ active: !this.state.active })
     onSelect = e => this.setState({ active: false, selected: e.target.id })
 

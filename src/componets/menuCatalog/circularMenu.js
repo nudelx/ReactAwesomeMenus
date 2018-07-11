@@ -17,15 +17,6 @@ class CircularMenu extends Component {
       radian: 180 / Math.PI
     }
   }
-  componentDidUpdate(prevProps, prevState) {
-    const { onChange } = this.props
-    if (
-      typeof onChange === 'function' &&
-      this.props.selected !== prevProps.selected
-    ) {
-      onChange(this.props.selected)
-    }
-  }
 
   doMath(index, opt) {
     const { calculateNextStep } = this.props

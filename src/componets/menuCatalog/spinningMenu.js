@@ -4,21 +4,28 @@ import './spinningMenu.css'
 class SpinningMenu extends React.Component {
   constructor(props) {
     super(props)
-    this.state = { active: false }
-    this.radius = 100
-    this.optimalAlphaStep = 35
-    this.offSet = 125
-    this.direction = 1
-    this.total = props.options.length
-    this.startAlpha = props.startAngle
-    this.currentAlpha = this.startAlpha
+    this.opt = {
+      radius: 100,
+      optimalAlphaStep: 35,
+      offSet: 125,
+      direction: 1,
+      total: props.options.length,
+      startAlpha: props.startAngle,
+      currentAlpha: props.startAngle
+    }
   }
 
-  onSelect = e => this.setState({ active: false, selected: e.target.id })
+  doMath(index, opt) {
+    const { calculateNextStep } = this.props
+    const { x, y, nextAlpha } = calculateNextStep({
+      index,
+      ...opt
+    })
+    this.opt.currentAlpha = nextAlpha
+    return { x, y }
+  }
 
-  onclick = () => this.setState({ active: !this.state.active })
   render() {
-    const { active } = this.state
     const {
       options,
       btnBgColor,
@@ -26,30 +33,22 @@ class SpinningMenu extends React.Component {
       btnIcon,
       itemColor,
       ringBgColor,
-      calculatePosition,
-      calculateAlpha
+      active,
+      onClick,
+      onSelect
     } = this.props
     return (
       <div className={`circle ${active ? 'open' : ''}`}>
         <div className="ring" style={{ backgroundColor: ringBgColor }}>
           {options.map((item, index) => {
-            const alpha = calculateAlpha({
-              index,
-              currentAlpha: this.currentAlpha,
-              startAlpha: this.startAlpha
-            })
-            const { x, y } = calculatePosition({
-              alpha,
-              radius: this.radius,
-              offSet: this.offSet
-            })
-            this.currentAlpha += this.optimalAlphaStep * this.direction
+            const { x, y } = this.doMath(index, this.opt)
+
             return (
               <button
                 key={`${item.name}_${index}`}
                 id={item.name}
                 href="#"
-                onClick={this.onSelect}
+                onClick={onSelect}
                 className={`menuItem ${item.class}`}
                 style={{
                   transform: `translate(${x}px, ${y}px)`,
@@ -60,7 +59,7 @@ class SpinningMenu extends React.Component {
           })}
         </div>
         <div
-          onClick={this.onclick}
+          onClick={onClick}
           className={`center ${btnIcon}`}
           style={{
             backgroundColor: btnBgColor,

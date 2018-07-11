@@ -7,13 +7,15 @@ import './circularMenu.css'
 class CircularMenu extends Component {
   constructor(props) {
     super(props)
-    this.radius = 120
-    this.total = props.options.length
-    this.optimalAlphaStep = 35
-    this.startAlpha = props.startAngle
-    this.currentAlpha = this.startAlpha
-    this.direction = props.itemsDirection === 'right' ? 1 : -1
-    this.radian = 180 / Math.PI
+    this.opt = {
+      radius: 120,
+      total: props.options.length,
+      optimalAlphaStep: 35,
+      startAlpha: props.startAngle,
+      currentAlpha: props.startAngle,
+      direction: props.itemsDirection === 'right' ? 1 : -1,
+      radian: 180 / Math.PI
+    }
   }
   componentDidUpdate(prevProps, prevState) {
     const { onChange } = this.props
@@ -25,26 +27,13 @@ class CircularMenu extends Component {
     }
   }
 
-  doMath(index) {
-    const {
-      currentAlpha,
-      startAlpha,
-      radius,
-      offSet,
-      optimalAlphaStep,
-      direction
-    } = this
+  doMath(index, opt) {
     const { calculateNextStep } = this.props
     const { x, y, nextAlpha } = calculateNextStep({
       index,
-      currentAlpha,
-      startAlpha,
-      radius,
-      offSet,
-      optimalAlphaStep,
-      direction
+      ...opt
     })
-    this.currentAlpha = nextAlpha
+    this.opt.currentAlpha = nextAlpha
     return { x, y }
   }
 
@@ -78,7 +67,7 @@ class CircularMenu extends Component {
         />
         <Menu>
           {options.map((item, index) => {
-            const { x, y } = this.doMath(index)
+            const { x, y } = this.doMath(index, this.opt)
 
             return (
               <button

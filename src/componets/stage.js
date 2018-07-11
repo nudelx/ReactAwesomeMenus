@@ -23,6 +23,7 @@ const options2 = [
 ]
 
 const CircularMenuEnhanced = enhanceWithBasic(CircularMenu)
+const SpinningMenuEnhanced = enhanceWithBasic(SpinningMenu)
 
 const Stage = () => (
   <div className="stage">
@@ -60,12 +61,12 @@ const Stage = () => (
       </Box>
     </Card>
 
-    {/* <Card title={'Spinning Menu'}>
+    <Card title={'Spinning Menu'}>
       <Box seporator>
-        <SpinningMenu />
+        <SpinningMenuEnhanced />
       </Box>
       <Box seporator>
-        <SpinningMenu
+        <SpinningMenuEnhanced
           btnIcon={'fab fa-rebel fa-2x'}
           btnBgColor={'#c48217'}
           ringBgColor={'#dba34a'}
@@ -73,7 +74,7 @@ const Stage = () => (
         />
       </Box>
       <Box seporator>
-        <SpinningMenu
+        <SpinningMenuEnhanced
           btnborderColor={'#871414'}
           btnBgColor={'#d86d68'}
           btnIcon={'fab fa-empire fa-2x'}
@@ -81,14 +82,14 @@ const Stage = () => (
         />
       </Box>
       <Box>
-        <SpinningMenu
+        <SpinningMenuEnhanced
           btnBgColor={'#4da556'}
           btnIcon={'fab fa-jedi-order fa-2x'}
           ringBgColor={'#9ac495'}
           itemColor={'#087040'}
         />
       </Box>
-    </Card> */}
+    </Card>
   </div>
 )
 

@@ -1,4 +1,5 @@
 import React from 'react'
+import enhanceWithBasic from './HOC/basiEcnhancement'
 import Box from './box'
 import Card from './card'
 import CircularMenu from './menuCatalog/circularMenu'
@@ -21,35 +22,37 @@ const options2 = [
   { class: 'fab fa-jedi-order', name: 'ff' }
 ]
 
+const CircularMenuEnhanced = enhanceWithBasic(CircularMenu)
+
 const Stage = () => (
   <div className="stage">
     <Card title={'Circular Menu'}>
       <Box seporator>
-        <CircularMenu
+        <CircularMenuEnhanced
           spinDirection={'left'}
           itemsDirection={'left'}
-          buttonIcon={'fas fa-cannabis'}
-          buttonColor={'#0bc46f'}
+          btnIcon={'fas fa-cannabis'}
+          btnColor={'#0bc46f'}
           options={options}
           startAngle={0}
           onChange={w => alert(w)}
         />
       </Box>
       <Box seporator>
-        <CircularMenu halfSpin onChange={w => alert(w)} />
+        <CircularMenuEnhanced halfSpin onChange={w => alert(w)} />
       </Box>
       <Box seporator>
-        <CircularMenu
-          buttonColor={'#5e6fd1'}
-          buttonIcon={'fas fa-plus'}
+        <CircularMenuEnhanced
+          btnColor={'#5e6fd1'}
+          btnIcon={'fas fa-plus'}
           startAngle={0}
           onChange={w => alert(w)}
         />
       </Box>
       <Box>
-        <CircularMenu
-          buttonIcon={'fab fa-empire'}
-          buttonColor={'#495056'}
+        <CircularMenuEnhanced
+          btnIcon={'fab fa-empire'}
+          btnColor={'#495056'}
           options={options2}
           startAngle={90}
           onChange={w => alert(w)}

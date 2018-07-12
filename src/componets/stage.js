@@ -74,7 +74,7 @@ const row2 = [
 ]
 
 const rowLoop = row =>
-  row1.map((Item, i) => (
+  row.map((Item, i) => (
     <Box key={i} seporator={!!i}>
       {Item}
     </Box>

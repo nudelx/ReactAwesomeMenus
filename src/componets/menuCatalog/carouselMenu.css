@@ -1,22 +1,13 @@
-/* html,
-body {
-  height: 100%;
-} */
-
-/* body {
-  margin: 0;
-  background: linear-gradient(blue, #ccc);
-  overflow: hidden;
-} */
-
 .selector {
-  position: relative;
-  /* left: 50%;
-  top: 50%; */
+  position: absolute;
   width: 140px;
   height: 140px;
-  /* margin-top: -70px;
-  margin-left: -70px; */
+}
+
+.selector,
+.selector button {
+  font-family: 'Oswald', sans-serif;
+  font-weight: 300;
 }
 
 .selector button {
@@ -53,12 +44,7 @@ body {
   left: -20px;
 }
 
-/* .selector li {
-  display: none;
-} */
-
 .selector li {
-  display: inline-block;
   position: absolute;
   width: 0;
   height: 100%;
@@ -67,7 +53,11 @@ body {
   transition: all 0.8s ease-in-out;
 }
 
-.selector.open li input + label {
+.selector li input {
+  display: none;
+}
+
+.selector li input + label {
   position: absolute;
   left: 50%;
   bottom: 100%;

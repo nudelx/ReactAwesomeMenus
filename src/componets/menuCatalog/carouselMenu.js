@@ -34,19 +34,20 @@ class CarouselMenu extends React.Component {
             const { calculatedAlpha } = this.doMath(index, this.opt)
             return (
               <li
-                className="item"
+                className={`item`}
                 key={`${item.name}_${index}`}
                 id={item.name}
                 href="#"
                 style={{
-                  transform: `rotate(${calculatedAlpha}deg)`
+                  transform: active ? `rotate(${calculatedAlpha}deg)` : ''
                 }}>
-                sssssss
+                <input id={`item_${index}`} type={`item_${index}`} />
+                <label htmlFor={`item_${index}`} />
               </li>
             )
           })}
         </ul>
-        <button onClick={onClick}>'click here'</button>
+        <button onClick={onClick}>click here</button>
       </div>
     )
   }

@@ -4,6 +4,7 @@ import './carouselMenu.css'
 class CarouselMenu extends React.Component {
   constructor(props) {
     super(props)
+    this.state = {}
     this.opt = {
       radius: 100,
       optimalAlphaStep: 45,
@@ -25,23 +26,30 @@ class CarouselMenu extends React.Component {
   }
   onCheckBoxClick = e => {
     const { onSelect } = this.props
-    console.log(e.nativeEvent.target.id, e.nativeEvent.target.checked)
-    return onSelect === 'function'
-      ? onSelect(e.nativeEvent.target.id, e.nativeEvent.target.checked)
-      : null
+    const itemId = e.nativeEvent.target.id
+    this.setState(
+      {
+        [itemId]: !this.state[itemId]
+      },
+      () => {
+        if (onSelect === 'function')
+          onSelect(e.target.id, this.state[e.target.id])
+      }
+    )
   }
 
   render() {
-    const { options, onClick, active } = this.props
+    const { options, onClick, active, btnLabel } = this.props
     return (
       <div className={`selector ${active ? 'open' : ''}`}>
         <ul>
           {options.map((item, index) => {
             const { calculatedAlpha } = this.doMath(index, this.opt)
+            const itemKey = `item_${index}_${item.name}`
             return (
               <li
                 className={`item`}
-                key={`${item.name}_${index}`}
+                key={`key_${itemKey}`}
                 id={item.name}
                 href="#"
                 style={{
@@ -49,17 +57,22 @@ class CarouselMenu extends React.Component {
                 }}>
                 <input
                   onClick={this.onCheckBoxClick}
-                  id={`item_${index}_${item.name}`}
+                  id={itemKey}
                   type="checkbox"
+                  checked={!!this.state[itemKey]}
                 />
-                <label htmlFor={`item_${index}_${item.name}`}>
-                  {item.name}
+                <label
+                  style={{
+                    transform: `rotate(${-calculatedAlpha}deg)`
+                  }}
+                  htmlFor={itemKey}>
+                  <i className={item.class} /> {item.name}
                 </label>
               </li>
             )
           })}
         </ul>
-        <button onClick={onClick}>OPTIONS</button>
+        <button onClick={onClick}>{btnLabel}</button>
       </div>
     )
   }
@@ -67,16 +80,17 @@ class CarouselMenu extends React.Component {
 
 CarouselMenu.defaultProps = {
   options: [
-    { name: 'home', class: 'fa fa-home fa-2x' },
-    { name: 'comment', class: 'fa fa-comment fa-2x' },
-    { name: 'play', class: 'fa fa-play fa-2x' },
-    { name: 'camera', class: 'fa fa-camera fa-2x' },
-    { name: 'music', class: 'fa fa-music fa-2x' },
-    { name: 'user', class: 'fa fa-user fa-2x' },
-    { name: 'empire', class: 'fab fa-empire fa-2x' },
-    { name: 'knight', class: 'fa fa-bell fa-2x' }
+    { name: 'home', class: 'fa fa-home ' },
+    { name: 'comment', class: 'fa fa-comment ' },
+    { name: 'play', class: 'fa fa-play ' },
+    { name: 'camera', class: 'fa fa-camera ' },
+    { name: 'music', class: 'fa fa-music ' },
+    { name: 'user', class: 'fa fa-user ' },
+    { name: 'empire', class: 'fab fa-empire' },
+    { name: 'knight', class: 'fa fa-bell ' }
   ],
-  startAngle: -90
+  startAngle: -90,
+  btnLabel: 'OPTIONS'
 }
 
 export default CarouselMenu

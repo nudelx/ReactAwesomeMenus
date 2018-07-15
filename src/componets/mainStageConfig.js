@@ -3,6 +3,7 @@ import enhanceWithBasic from './HOC/baseEnhancement'
 import Box from './box'
 import CircularMenu from './menuCatalog/circularMenu'
 import SpinningMenu from './menuCatalog/spinningMenu'
+import CarouselMenu from './menuCatalog/carouselMenu'
 
 export const options = [
   { class: 'far fa-grin-beam', name: 'aa' },
@@ -23,6 +24,7 @@ export const options2 = [
 
 const CircularMenuEnhanced = enhanceWithBasic(CircularMenu)
 const SpinningMenuEnhanced = enhanceWithBasic(SpinningMenu)
+const CarouselMenuEnhanced = enhanceWithBasic(CarouselMenu)
 
 export const row1 = [
   <CircularMenuEnhanced
@@ -71,6 +73,8 @@ export const row2 = [
     itemColor={'#087040'}
   />
 ]
+
+export const row3 = [<CarouselMenuEnhanced />]
 
 export const rowLoop = row =>
   row.map((Item, i) => (

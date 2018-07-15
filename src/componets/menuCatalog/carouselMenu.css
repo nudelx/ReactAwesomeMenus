@@ -86,14 +86,14 @@
   background: #f0f0f0;
 }
 
-.selector li input:checked + label {
+/* .selector li input:checked + label {
   background: #5cb85c;
   color: white;
 }
 
 .selector li input:checked + label:hover {
   background: #449d44;
-}
+} */
 
 .selector.open li input + label {
   width: 80px;

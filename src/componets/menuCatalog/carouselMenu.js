@@ -40,7 +40,11 @@ class CarouselMenu extends React.Component {
                 style={{
                   transform: active ? `rotate(${calculatedAlpha}deg)` : ''
                 }}>
-                <input id={`item_${index}`} type={`item_${index}`} />
+                <input
+                  onClick={e => console.log(e.nativeEvent.target.checked)}
+                  id={`item_${index}`}
+                  type="checkbox"
+                />
                 <label htmlFor={`item_${index}`} />
               </li>
             )

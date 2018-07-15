@@ -23,6 +23,13 @@ class CarouselMenu extends React.Component {
     this.opt.currentAlpha = nextAlpha
     return { calculatedAlpha }
   }
+  onCheckBoxClick = e => {
+    const { onSelect } = this.props
+    console.log(e.nativeEvent.target.id, e.nativeEvent.target.checked)
+    return onSelect === 'function'
+      ? onSelect(e.nativeEvent.target.id, e.nativeEvent.target.checked)
+      : null
+  }
 
   render() {
     const { options, onClick, active } = this.props
@@ -41,16 +48,18 @@ class CarouselMenu extends React.Component {
                   transform: active ? `rotate(${calculatedAlpha}deg)` : ''
                 }}>
                 <input
-                  onClick={e => console.log(e.nativeEvent.target.checked)}
-                  id={`item_${index}`}
+                  onClick={this.onCheckBoxClick}
+                  id={`item_${index}_${item.name}`}
                   type="checkbox"
                 />
-                <label htmlFor={`item_${index}`} />
+                <label htmlFor={`item_${index}_${item.name}`}>
+                  {item.name}
+                </label>
               </li>
             )
           })}
         </ul>
-        <button onClick={onClick}>click here</button>
+        <button onClick={onClick}>OPTIONS</button>
       </div>
     )
   }

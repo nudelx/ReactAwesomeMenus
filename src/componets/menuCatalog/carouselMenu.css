@@ -86,14 +86,14 @@
   background: #f0f0f0;
 }
 
-/* .selector li input:checked + label {
+.selector li input:checked + label {
   background: #5cb85c;
   color: white;
 }
 
 .selector li input:checked + label:hover {
   background: #449d44;
-} */
+}
 
 .selector.open li input + label {
   width: 80px;
@@ -102,4 +102,5 @@
   margin-left: -40px;
   box-shadow: 0 3px 3px rgba(0, 0, 0, 0.1);
   font-size: 14px;
+  outline: none;
 }

@@ -6,8 +6,7 @@ class CarouselMenu extends React.Component {
     super(props)
     this.opt = {
       radius: 100,
-      optimalAlphaStep: 35,
-      // offSet: 125,
+      optimalAlphaStep: 45,
       direction: 1,
       total: props.options.length,
       startAlpha: props.startAngle,

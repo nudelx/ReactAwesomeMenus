@@ -1,7 +1,11 @@
 .selector {
-  position: absolute;
+  position: relative;
   width: 140px;
   height: 140px;
+  margin-left: auto;
+  margin-right: auto;
+  vertical-align: middle;
+  display: inline-block;
 }
 
 .selector,
@@ -11,9 +15,12 @@
 }
 
 .selector button {
-  position: relative;
+  position: absolute;
   width: 100%;
-  height: 100%;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
   padding: 10px;
   background: #428bca;
   border-radius: 50%;
@@ -38,10 +45,10 @@
   list-style: none;
   padding: 0;
   margin: 0;
-  top: -20px;
-  right: -20px;
-  bottom: -20px;
-  left: -20px;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
 }
 
 .selector li {

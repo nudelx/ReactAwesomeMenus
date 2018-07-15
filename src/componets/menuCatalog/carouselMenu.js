@@ -17,12 +17,12 @@ class CarouselMenu extends React.Component {
 
   doMath(index, opt) {
     const { calculateNextStep } = this.props
-    const { x, y, nextAlpha } = calculateNextStep({
+    const { nextAlpha, calculatedAlpha } = calculateNextStep({
       index,
       ...opt
     })
     this.opt.currentAlpha = nextAlpha
-    return { x, y }
+    return { calculatedAlpha }
   }
 
   render() {
@@ -31,8 +31,7 @@ class CarouselMenu extends React.Component {
       <div className={`selector ${active ? 'open' : ''}`}>
         <ul>
           {options.map((item, index) => {
-            const { x, y } = this.doMath(index, this.opt)
-            console.log(x, y)
+            const { calculatedAlpha } = this.doMath(index, this.opt)
             return (
               <li
                 className="item"
@@ -40,7 +39,7 @@ class CarouselMenu extends React.Component {
                 id={item.name}
                 href="#"
                 style={{
-                  transform: `translate(${x}px, ${y}px)`
+                  transform: `rotate(${calculatedAlpha}deg)`
                 }}>
                 sssssss
               </li>

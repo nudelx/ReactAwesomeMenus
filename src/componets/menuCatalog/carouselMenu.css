@@ -53,11 +53,11 @@ body {
   left: -20px;
 }
 
-.selector li {
+/* .selector li {
   display: none;
-}
+} */
 
-.selector.open li {
+.selector li {
   display: inline-block;
   position: absolute;
   width: 0;

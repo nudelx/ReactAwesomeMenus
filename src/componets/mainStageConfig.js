@@ -74,7 +74,12 @@ export const row2 = [
   />
 ]
 
-export const row3 = [<CarouselMenuEnhanced />]
+export const row3 = [
+  <CarouselMenuEnhanced />,
+  <CarouselMenuEnhanced options={options} />,
+  <CarouselMenuEnhanced options={options2} />,
+  <CarouselMenuEnhanced />
+]
 
 export const rowLoop = row =>
   row.map((Item, i) => (

@@ -39,7 +39,16 @@ class CarouselMenu extends React.Component {
   }
 
   render() {
-    const { options, onClick, active, btnLabel } = this.props
+    const {
+      options,
+      onClick,
+      active,
+      btnLabel,
+      itemColor,
+      itemColorChecked,
+      itemTextColor,
+      itemTextColorChecked
+    } = this.props
     return (
       <div className={`selector ${active ? 'open' : ''}`}>
         <ul>
@@ -63,7 +72,13 @@ class CarouselMenu extends React.Component {
                 />
                 <label
                   style={{
-                    transform: `rotate(${-calculatedAlpha}deg)`
+                    transform: `rotate(${-calculatedAlpha}deg)`,
+                    backgroundColor: !!this.state[itemKey]
+                      ? itemColorChecked
+                      : itemColor,
+                    color: !!this.state[itemKey]
+                      ? itemTextColorChecked
+                      : itemTextColor
                   }}
                   htmlFor={itemKey}>
                   <i className={item.class} /> {item.name}
@@ -90,7 +105,11 @@ CarouselMenu.defaultProps = {
     { name: 'knight', class: 'fa fa-bell ' }
   ],
   startAngle: -90,
-  btnLabel: 'OPTIONS'
+  btnLabel: 'OPTIONS',
+  itemColor: '#a4d5f9',
+  itemColorChecked: '#5cb85c',
+  itemTextColor: '#222',
+  itemTextColorChecked: '#fff'
 }
 
 export default CarouselMenu

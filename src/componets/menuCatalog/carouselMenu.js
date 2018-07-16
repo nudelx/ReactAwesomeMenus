@@ -47,7 +47,9 @@ class CarouselMenu extends React.Component {
       itemColor,
       itemColorChecked,
       itemTextColor,
-      itemTextColorChecked
+      itemTextColorChecked,
+      btnIcon,
+      btnBgColor
     } = this.props
     return (
       <div className={`selector ${active ? 'open' : ''}`}>
@@ -87,7 +89,10 @@ class CarouselMenu extends React.Component {
             )
           })}
         </ul>
-        <button onClick={onClick}>{btnLabel}</button>
+        <button style={{ backgroundColor: btnBgColor }} onClick={onClick}>
+          <i className={btnIcon} />
+          {btnLabel}
+        </button>
       </div>
     )
   }

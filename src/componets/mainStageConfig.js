@@ -75,9 +75,19 @@ export const row2 = [
 ]
 
 export const row3 = [
-  <CarouselMenuEnhanced />,
-  <CarouselMenuEnhanced options={options} />,
-  <CarouselMenuEnhanced options={options2} />,
+  <CarouselMenuEnhanced btnBgColor={'#e86190'} itemColor={'#e5e160'} />,
+  <CarouselMenuEnhanced
+    btnIcon={'fab fa-empire fa-2x'}
+    btnLabel={''}
+    options={options}
+  />,
+  <CarouselMenuEnhanced
+    options={options2}
+    btnLabel={''}
+    btnIcon={'fab fa-rebel fa-2x'}
+    btnBgColor={'#4da556'}
+    itemColor={'#8ad892'}
+  />,
   <CarouselMenuEnhanced />
 ]
 

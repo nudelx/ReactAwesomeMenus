@@ -58,6 +58,7 @@ const enhanceWithBasic = WrappedComponent => {
         radius,
         offSet
       })
+      position.calculatedAlpha = alpha
       position.nextAlpha = alpha + optimalAlphaStep * direction
       return position
     }

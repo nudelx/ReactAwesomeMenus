@@ -1,22 +1,22 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-const FloatingButton = ({ onclick, buttonIcon, bgColor }) => (
+const FloatingButton = ({ onclick, btnIcon, bgColor }) => (
   <a
     className="floating-btn"
     onClick={onclick}
     style={{ backgroundColor: bgColor }}>
-    <i className={`${buttonIcon}`} />
+    <i className={`${btnIcon}`} />
   </a>
 )
 
 FloatingButton.propTypes = {
   onclick: PropTypes.func.isRequired,
-  buttonIcon: PropTypes.string
+  btnIcon: PropTypes.string
 }
 
 FloatingButton.defaultProps = {
-  buttonIcon: 'far-plus',
+  btnIcon: 'far-plus',
   bgColor: '#3544fd'
 }
 

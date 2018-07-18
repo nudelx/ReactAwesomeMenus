@@ -4,56 +4,51 @@ import './spinningMenu.css'
 class SpinningMenu extends React.Component {
   constructor(props) {
     super(props)
-    this.state = { active: false }
-    this.radius = 100
-    this.radian = 180 / Math.PI
-    this.optimalAlphaStep = 35
-    this.offSet = 125
-    this.direction = 1
-    this.total = props.options.length
-    this.startAlpha = props.startAngle
-    this.currentAlpha = this.startAlpha
-  }
-
-  calculatePosition(alpha, radius, offSet) {
-    return {
-      x: this.radius * Math.cos(alpha / this.radian) + this.offSet,
-      y: this.radius * Math.sin(alpha / this.radian) + this.offSet
+    this.opt = {
+      radius: 100,
+      optimalAlphaStep: 35,
+      offSet: 125,
+      direction: 1,
+      total: props.options.length,
+      startAlpha: props.startAngle,
+      currentAlpha: props.startAngle
     }
   }
 
-  calculateAlpha(index) {
-    this.currentAlpha = index === 0 ? this.startAlpha : this.currentAlpha
-    this.currentAlpha = this.currentAlpha >= 360 ? 0 : this.currentAlpha
-    const position = this.calculatePosition(this.currentAlpha)
-    this.currentAlpha += this.optimalAlphaStep * this.direction
-    return position
+  doMath(index, opt) {
+    const { calculateNextStep } = this.props
+    const { x, y, nextAlpha } = calculateNextStep({
+      index,
+      ...opt
+    })
+    this.opt.currentAlpha = nextAlpha
+    return { x, y }
   }
 
-  onSelect = e => this.setState({ active: false, selected: e.target.id })
-
-  onclick = () => this.setState({ active: !this.state.active })
   render() {
-    const { active } = this.state
     const {
       options,
       btnBgColor,
       btnborderColor,
       btnIcon,
       itemColor,
-      ringBgColor
+      ringBgColor,
+      active,
+      onClick,
+      onSelect
     } = this.props
     return (
       <div className={`circle ${active ? 'open' : ''}`}>
         <div className="ring" style={{ backgroundColor: ringBgColor }}>
           {options.map((item, index) => {
-            const { x, y } = this.calculateAlpha(index)
+            const { x, y } = this.doMath(index, this.opt)
+
             return (
               <button
                 key={`${item.name}_${index}`}
                 id={item.name}
                 href="#"
-                onClick={this.onSelect}
+                onClick={onSelect}
                 className={`menuItem ${item.class}`}
                 style={{
                   transform: `translate(${x}px, ${y}px)`,
@@ -64,7 +59,7 @@ class SpinningMenu extends React.Component {
           })}
         </div>
         <div
-          onClick={this.onclick}
+          onClick={onClick}
           className={`center ${btnIcon}`}
           style={{
             backgroundColor: btnBgColor,

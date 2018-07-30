@@ -4,6 +4,7 @@ import Box from './box'
 import CircularMenu from './menuCatalog/circularMenu'
 import SpinningMenu from './menuCatalog/spinningMenu'
 import CarouselMenu from './menuCatalog/carouselMenu'
+import FlowerMenu from './menuCatalog/flowerMenu'
 
 export const options = [
   { class: 'far fa-grin-beam', name: 'aa' },
@@ -25,6 +26,7 @@ export const options2 = [
 const CircularMenuEnhanced = enhanceWithBasic(CircularMenu)
 const SpinningMenuEnhanced = enhanceWithBasic(SpinningMenu)
 const CarouselMenuEnhanced = enhanceWithBasic(CarouselMenu)
+const FlowerMenuEnhanced = enhanceWithBasic(FlowerMenu)
 
 export const row1 = [
   <CircularMenuEnhanced
@@ -89,6 +91,10 @@ export const row3 = [
     itemColor={'#8ad892'}
   />,
   <CarouselMenuEnhanced />
+]
+export const row4 = [
+  <FlowerMenuEnhanced />,
+
 ]
 
 export const rowLoop = row =>

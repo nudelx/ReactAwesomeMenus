@@ -63,7 +63,7 @@
   animation: counter-spin 45s infinite linear;
 }
 
-.flower .cover {
+.flower .cover .floating-btn {
   width: 120px;
   height: 120px;
   background-size: 100%;
@@ -71,6 +71,18 @@
   box-shadow: 0 0 2px 4px #d1d1d1, 0 0 20px 4px #000;
   position: absolute;
   top: 0;
+}
+
+.flower .floating-btn {
+  background-color: rgb(255, 134, 178);
+  text-align: center;
+  vertical-align: sub;
+  line-height: 120px;
+}
+.flower .floating-btn i {
+  display: inline-block;
+  vertical-align: middle;
+  color: white;
 }
 
 .flower a {
@@ -92,7 +104,7 @@
   transition: transform 3.2s ease-in-out;
 }
 
-.flower .child .leaf img {
+.flower .child .leaf i {
   width: 64px;
   height: 64px;
   left: 28px;
@@ -101,9 +113,9 @@
   border: none;
 }
 
-.flower .child:nth-child(1) {
+/* .flower .child:nth-child(1) {
   transform: rotate(-90deg);
-}
+} */
 
 .flower .child:nth-child(1) .leaf {
   background-color: #3535e0;
@@ -115,11 +127,11 @@
 
 .flower .child:nth-child(1) .leaf .glass-holder {
   height: 100%;
-  transform: rotate(90deg);
+  /* transform: rotate(90deg); */
 }
 
 .flower .child:nth-child(2) {
-  transform: rotate(-18deg);
+  /* transform: rotate(-18deg); */
 }
 
 .flower .child:nth-child(2) .leaf {
@@ -132,11 +144,11 @@
 
 .flower .child:nth-child(2) .leaf .glass-holder {
   height: 100%;
-  transform: rotate(18deg);
+  /* transform: rotate(18deg); */
 }
 
 .flower .child:nth-child(3) {
-  transform: rotate(54deg);
+  /* transform: rotate(54deg); */
 }
 
 .flower .child:nth-child(3) .leaf {
@@ -149,11 +161,11 @@
 
 .flower .child:nth-child(3) .leaf .glass-holder {
   height: 100%;
-  transform: rotate(-54deg);
+  /* transform: rotate(-54deg); */
 }
 
 .flower .child:nth-child(4) {
-  transform: rotate(126deg);
+  /* transform: rotate(126deg); */
 }
 
 .flower .child:nth-child(4) .leaf {
@@ -166,11 +178,11 @@
 
 .flower .child:nth-child(4) .leaf .glass-holder {
   height: 100%;
-  transform: rotate(-126deg);
+  /* transform: rotate(-126deg); */
 }
 
 .flower .child:nth-child(5) {
-  transform: rotate(198deg);
+  /* transform: rotate(198deg); */
 }
 
 .flower .child:nth-child(5) .leaf {
@@ -182,8 +194,8 @@
 }
 
 .flower .child:nth-child(5) .leaf .glass-holder {
-  height: 100%;
-  transform: rotate(-198deg);
+  /* height: 100%; */
+  /* transform: rotate(-198deg); */
 }
 
 .flower .glass {
@@ -213,7 +225,7 @@
   transform: rotate(-2970deg);
 }
 
-a {
+button {
   outline: 0;
 }
 

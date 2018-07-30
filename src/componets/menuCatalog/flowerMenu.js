@@ -10,7 +10,7 @@ class FlowerMenu extends Component {
     this.opt = {
       radius: 120,
       total: props.options.length,
-      optimalAlphaStep: 35,
+      optimalAlphaStep: 360 / props.options.length,
       startAlpha: props.startAngle,
       currentAlpha: props.startAngle,
       direction: props.itemsDirection === 'right' ? 1 : -1
@@ -19,12 +19,12 @@ class FlowerMenu extends Component {
 
   doMath(index, opt) {
     const { calculateNextStep } = this.props
-    const { x, y, nextAlpha } = calculateNextStep({
+    const { nextAlpha, calculatedAlpha } = calculateNextStep({
       index,
       ...opt
     })
     this.opt.currentAlpha = nextAlpha
-    return { x, y }
+    return { calculatedAlpha }
   }
 
   render() {
@@ -44,7 +44,49 @@ class FlowerMenu extends Component {
       <div className={`flower ${active ? 'active' : ''}`}>
         <div className="inner">
           <div className="spinner">
-            <div className="child">
+            {options.map((item, index) => {
+              const { calculatedAlpha } = this.doMath(index, this.opt)
+              return (
+                <div
+                  className="child"
+                  style={{
+                    transform: active ? `rotate(${calculatedAlpha}deg)` : ''
+                  }}>
+                  <div
+                    className="leaf"
+                    style={{
+                      transform: active
+                        ? `rotate(${calculatedAlpha}deg) translateX(144px) rotate(2250deg)`
+                        : '',
+                      backgroundColor: item.color,
+                      backgroundSize: '100%',
+                      opacity: '0.94',
+                      transition:
+                        'transform 3.2s ease-in-out, box-shadow 0.16s ease-in-out, visibility 3.2s linear'
+                    }}>
+                    <i
+                      className={item.class}
+                      style={{
+                        color: 'white'
+                      }}
+                    />
+                    <div
+                      className="glass-holder"
+                      style={{
+                        transform: active
+                          ? `rotate(${calculatedAlpha}deg)`
+                          : '',
+                        height: '100%'
+                      }}>
+                      <div className="counterspin">
+                        <div className="glass" />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              )
+            })}
+            {/* <div className="child">
               <a className="leaf" href="https://fb.me/tknomad" target="_blank">
                 <img
                   src="https://rawcdn.githack.com/specious/specious.github.io/08dba0c/gfx/icons/fb.svg"
@@ -120,9 +162,17 @@ class FlowerMenu extends Component {
                   </div>
                 </div>
               </a>
-            </div>
+            </div> */}
           </div>
-          <div className="cover" onClick={onClick} />
+
+          <div className="cover">
+            {' '}
+            <FloatingButton
+              onClick={onClick}
+              bgColor="#398963"
+              btnIcon={'fab fa-jedi-order fa-4x'}
+            />
+          </div>
         </div>
       </div>
     )
@@ -130,13 +180,13 @@ class FlowerMenu extends Component {
 }
 FlowerMenu.defaultProps = {
   options: [
-    { name: 'facebook', class: 'fab fa-facebook' },
-    { name: 'twitter', class: 'fab fa-twitter' },
-    { name: 'google', class: 'fab fa-google-plus' },
-    { name: 'linkedin', class: 'fab fa-linkedin' },
-    { name: 'rebel', class: 'fab fa-rebel' },
-    { name: 'empire', class: 'fab fa-empire' },
-    { name: 'react', class: 'fab fa-react' }
+    { name: 'facebook', class: 'fab fa-facebook fa-4x', color: '#4089c8' },
+    { name: 'twitter', class: 'fab fa-twitter fa-4x', color: '#787528' },
+    { name: 'google', class: 'fab fa-google-plus fa-4x', color: '#ae92be' },
+    { name: 'linkedin', class: 'fab fa-linkedin fa-4x', color: '#647692' },
+    { name: 'rebel', class: 'fab fa-rebel fa-4x', color: '#c4858c' },
+    { name: 'empire', class: 'fab fa-empire fa-4x', color: '#4089c8' },
+    { name: 'react', class: 'fab fa-react fa-4x', color: '#8992a3' }
   ],
   halfSpin: false,
   spinDirection: 'right',

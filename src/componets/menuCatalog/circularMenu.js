@@ -51,7 +51,7 @@ class CircularMenu extends Component {
           borderRadius: '50%'
         }}>
         <FloatingButton
-          onclick={onClick}
+          onClick={onClick}
           btnIcon={btnIcon}
           bgColor={btnColor}
         />

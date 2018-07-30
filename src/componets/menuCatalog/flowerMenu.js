@@ -28,17 +28,7 @@ class FlowerMenu extends Component {
   }
 
   render() {
-    const {
-      options,
-      spinDirection,
-      halfSpin,
-      btnIcon,
-      btnColor,
-      menuColor,
-      active,
-      onClick,
-      onSelect
-    } = this.props
+    const { options, btnIcon, btnColor, active, onClick } = this.props
 
     return (
       <div className={`flower ${active ? 'active' : ''}`}>
@@ -48,6 +38,7 @@ class FlowerMenu extends Component {
               const { calculatedAlpha } = this.doMath(index, this.opt)
               return (
                 <div
+                  key={`item_${index}_${item.name}`}
                   className="child"
                   style={{
                     transform: active ? `rotate(${calculatedAlpha}deg)` : ''
@@ -86,91 +77,14 @@ class FlowerMenu extends Component {
                 </div>
               )
             })}
-            {/* <div className="child">
-              <a className="leaf" href="https://fb.me/tknomad" target="_blank">
-                <img
-                  src="https://rawcdn.githack.com/specious/specious.github.io/08dba0c/gfx/icons/fb.svg"
-                  alt="Facebook"
-                />
-                <div className="glass-holder">
-                  <div className="counterspin">
-                    <div className="glass" />
-                  </div>
-                </div>
-              </a>
-            </div>
-            <div className="child">
-              <a
-                className="leaf"
-                href="https://twitter.com/tknomad"
-                target="_blank">
-                <img
-                  src="https://rawcdn.githack.com/specious/specious.github.io/08dba0c/gfx/icons/bird.svg"
-                  alt="Twitter"
-                />
-                <div className="glass-holder">
-                  <div className="counterspin">
-                    <div className="glass" />
-                  </div>
-                </div>
-              </a>
-            </div>
-            <div className="child">
-              <a
-                className="leaf"
-                href="https://www.flickr.com/photos/the-specious"
-                target="_blank">
-                <img
-                  src="https://rawcdn.githack.com/specious/specious.github.io/08dba0c/gfx/icons/photos.svg"
-                  alt="Flickr"
-                />
-                <div className="glass-holder">
-                  <div className="counterspin">
-                    <div className="glass" />
-                  </div>
-                </div>
-              </a>
-            </div>
-            <div className="child">
-              <a
-                className="leaf"
-                href="https://github.com/specious"
-                target="_blank">
-                <img
-                  src="https://rawcdn.githack.com/specious/specious.github.io/08dba0c/gfx/icons/octocat.svg"
-                  alt="GitHub"
-                />
-                <div className="glass-holder">
-                  <div className="counterspin">
-                    <div className="glass" />
-                  </div>
-                </div>
-              </a>
-            </div>
-            <div className="child">
-              <a
-                className="leaf"
-                href="https://codepen.io/tknomad"
-                target="_blank">
-                <img
-                  src="https://rawcdn.githack.com/specious/specious.github.io/08dba0c/gfx/icons/codepen.svg"
-                  alt="CodePen"
-                />
-                <div className="glass-holder">
-                  <div className="counterspin">
-                    <div className="glass" />
-                  </div>
-                </div>
-              </a>
-            </div> */}
           </div>
 
           <div className="cover">
             {' '}
             <FloatingButton
               onClick={onClick}
-              bgColor="#398963"
-              btnIcon={'fab fa-jedi-order fa-4x'}
+              bgColor={btnColor}
+              btnIcon={btnIcon}
             />
           </div>
         </div>
@@ -191,8 +105,8 @@ FlowerMenu.defaultProps = {
   halfSpin: false,
   spinDirection: 'right',
   itemsDirection: 'right',
-  btnIcon: 'fas fa-bars',
-  btnColor: '#FF86B2',
+  btnIcon: 'fab fa-jedi-order fa-4x',
+  btnColor: '#398963',
   startAngle: -90
 }
 

@@ -28,7 +28,14 @@ class FlowerMenu extends Component {
   }
 
   render() {
-    const { options, btnIcon, btnColor, active, onClick } = this.props
+    const {
+      options,
+      btnIcon,
+      btnColor,
+      active,
+      onClick,
+      btnTxtColor
+    } = this.props
 
     return (
       <div className={`flower ${active ? 'active' : ''}`}>
@@ -58,7 +65,7 @@ class FlowerMenu extends Component {
                     <i
                       className={item.class}
                       style={{
-                        color: 'white'
+                        color: btnTxtColor
                       }}
                     />
                     <div
@@ -107,6 +114,7 @@ FlowerMenu.defaultProps = {
   itemsDirection: 'right',
   btnIcon: 'fab fa-jedi-order fa-4x',
   btnColor: '#398963',
+  btnTxtColor: '#ffffff',
   startAngle: -90
 }
 

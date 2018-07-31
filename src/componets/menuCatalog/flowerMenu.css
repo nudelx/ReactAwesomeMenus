@@ -1,0 +1,188 @@
+.flower .glass {
+  background-image: radial-gradient(
+    circle closest-side,
+    rgba(38, 38, 38, 0.2),
+    rgba(0, 0, 0, 0.63)
+  );
+  background-size: 100% 100%;
+  border-radius: 50%;
+  position: relative;
+}
+
+.flower .glass::before {
+  position: absolute;
+  width: 56%;
+  height: 26%;
+  top: 4%;
+  left: 22%;
+  border-radius: 50%;
+  background-image: linear-gradient(
+    to bottom,
+    rgba(207, 207, 207, 0.23),
+    rgba(30, 30, 30, 0.06)
+  );
+  content: '';
+}
+
+.flower .glass::after {
+  position: absolute;
+  width: 38%;
+  height: 19%;
+  bottom: 3%;
+  left: 31%;
+  border-radius: 50%;
+  background-image: linear-gradient(
+    to bottom,
+    rgba(93, 93, 93, 0.1),
+    rgba(0, 0, 0, 0.18)
+  );
+  content: '';
+}
+
+.flower {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  cursor: pointer;
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.flower .spinner,
+.flower .inner,
+.flower .counterspin {
+  height: 100%;
+}
+
+.flower .spinner {
+  animation: spin 45s infinite linear;
+}
+
+.flower .counterspin {
+  animation: counter-spin 45s infinite linear;
+}
+
+.flower .cover .floating-btn {
+  width: 120px;
+  height: 120px;
+  background-size: 100%;
+  border-radius: 50%;
+  box-shadow: 0 0 2px 4px #d1d1d1, 0 0 20px 4px #000;
+  position: absolute;
+  top: 0;
+}
+
+.flower .floating-btn {
+  background-color: rgb(255, 134, 178);
+  text-align: center;
+  vertical-align: sub;
+  line-height: 120px;
+}
+.flower .floating-btn i {
+  display: inline-block;
+  vertical-align: middle;
+  color: white;
+}
+
+.flower a {
+  display: block;
+}
+
+.flower .child {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  position: absolute;
+  top: 0;
+}
+
+.flower .child .leaf {
+  height: 100%;
+  border-radius: 50%;
+  visibility: hidden;
+  transition: transform 3.2s ease-in-out;
+}
+
+.flower .child .leaf i {
+  width: 64px;
+  height: 64px;
+  left: 28px;
+  top: 28px;
+  position: absolute;
+  border: none;
+}
+
+.flower .glass {
+  height: 100%;
+  transition: transform 3.2s ease-in-out;
+}
+
+.flower.active {
+  transform: scale(3.4);
+}
+
+.flower.active .inner {
+  transform: scale(0.294117647058824);
+}
+
+.flower.active .leaf {
+  visibility: visible;
+}
+
+.flower.active .leaf:hover {
+  box-shadow: 0 0 34px #d3d9ff, 0 0 0 1px #000,
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.flower div {
+  outline: 0;
+}
+
+@-moz-keyframes spin {
+  to {
+    transform: rotate(1turn);
+  }
+}
+
+@-webkit-keyframes spin {
+  to {
+    transform: rotate(1turn);
+  }
+}
+
+@-o-keyframes spin {
+  to {
+    transform: rotate(1turn);
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(1turn);
+  }
+}
+
+@-moz-keyframes counter-spin {
+  to {
+    transform: rotate(-1turn);
+  }
+}
+
+@-webkit-keyframes counter-spin {
+  to {
+    transform: rotate(-1turn);
+  }
+}
+
+@-o-keyframes counter-spin {
+  to {
+    transform: rotate(-1turn);
+  }
+}
+
+@keyframes counter-spin {
+  to {
+    transform: rotate(-1turn);
+  }
+}

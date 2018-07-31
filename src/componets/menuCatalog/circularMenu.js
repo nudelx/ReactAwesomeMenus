@@ -51,7 +51,7 @@ class CircularMenu extends Component {
           borderRadius: '50%'
         }}>
         <FloatingButton
-          onclick={onClick}
+          onClick={onClick}
           btnIcon={btnIcon}
           bgColor={btnColor}
         />
@@ -79,6 +79,22 @@ class CircularMenu extends Component {
     )
   }
 }
+CircularMenu.propTypes = {
+  onChange: PropTypes.func,
+  halfSpin: PropTypes.bool,
+  spinDirection: PropTypes.string,
+  btnColor: PropTypes.string,
+  itemsDirection: PropTypes.string,
+  btnIcon: PropTypes.string,
+  startAngle: PropTypes.number,
+  options: PropTypes.arrayOf(
+    PropTypes.shape({
+      name: PropTypes.string,
+      class: PropTypes.string,
+      value: PropTypes.string
+    })
+  )
+}
 CircularMenu.defaultProps = {
   options: [
     { name: 'facebook', class: 'fab fa-facebook' },
@@ -95,23 +111,6 @@ CircularMenu.defaultProps = {
   btnIcon: 'fas fa-bars',
   btnColor: '#FF86B2',
   startAngle: -90
-}
-
-CircularMenu.propTypes = {
-  onChange: PropTypes.func,
-  halfSpin: PropTypes.bool,
-  spinDirection: PropTypes.string,
-  btnColor: PropTypes.string,
-  itemsDirection: PropTypes.string,
-  btnIcon: PropTypes.string,
-  startAngle: PropTypes.number,
-  options: PropTypes.arrayOf(
-    PropTypes.shape({
-      name: PropTypes.string,
-      class: PropTypes.string,
-      value: PropTypes.string
-    })
-  )
 }
 
 export default CircularMenu

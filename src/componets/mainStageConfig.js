@@ -22,6 +22,12 @@ export const options2 = [
   { class: 'fab fa-rebel', name: 'ee' },
   { class: 'fab fa-jedi-order', name: 'ff' }
 ]
+export const options3 = [
+  { class: 'fab fa-apple fa-4x', name: 'Apple', color: '#BEB8EB' },
+  { class: 'fab fab fa-android fa-4x', name: 'Android', color: '#5299D3' },
+  { class: 'fab fa-aws fa-4x', name: 'Amazon', color: '#A2BCE0' },
+  { class: 'fab fa-bitcoin fa-4x', name: 'Bitcoin', color: '#5E5C6C' }
+]
 
 const CircularMenuEnhanced = enhanceWithBasic(CircularMenu)
 const SpinningMenuEnhanced = enhanceWithBasic(SpinningMenu)
@@ -94,7 +100,24 @@ export const row3 = [
 ]
 export const row4 = [
   <FlowerMenuEnhanced />,
-
+  <FlowerMenuEnhanced
+    options={options3}
+    btnBgColor={'#647692'}
+    btnIcon={'fas fa-bug fa-4x'}
+    btnColor={'#fdc739'}
+  />,
+  <FlowerMenuEnhanced
+    options={options3}
+    btnBgColor={'#2179BC'}
+    btnIcon={'fab fa-bluetooth fa-4x'}
+    btnColor={'#fff'}
+  />,
+  <FlowerMenuEnhanced
+    options={options3}
+    btnBgColor={'#5D4157'}
+    btnIcon={'fas fa-chess-knight fa-4x'}
+    btnColor={'#EBE3AA'}
+  />
 ]
 
 export const rowLoop = row =>

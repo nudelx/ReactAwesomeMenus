@@ -1,4 +1,4 @@
-.glass {
+.flower .glass {
   background-image: radial-gradient(
     circle closest-side,
     rgba(38, 38, 38, 0.2),
@@ -9,7 +9,7 @@
   position: relative;
 }
 
-.glass::before {
+.flower .glass::before {
   position: absolute;
   width: 56%;
   height: 26%;
@@ -24,7 +24,7 @@
   content: '';
 }
 
-.glass::after {
+.flower .glass::after {
   position: absolute;
   width: 38%;
   height: 19%;
@@ -135,7 +135,7 @@
     inset 0 1px 0 rgba(255, 255, 255, 0.2);
 }
 
-div {
+.flower div {
   outline: 0;
 }
 

@@ -8,12 +8,9 @@ class FlowerMenu extends Component {
     super(props)
 
     this.opt = {
-      radius: 120,
+      radius: 144,
       total: props.options.length,
-      optimalAlphaStep:
-        props.options.length % 2 === 0
-          ? 360 / (props.options.length + 1)
-          : 360 / props.options.length,
+      optimalAlphaStep: 360 / props.options.length,
       startAlpha: props.startAngle,
       currentAlpha: props.startAngle,
       direction: props.itemsDirection === 'right' ? 1 : -1
@@ -21,7 +18,6 @@ class FlowerMenu extends Component {
   }
 
   doMath(index, opt) {
-    console.log(this)
     const { calculateNextStep } = this.props
     const { nextAlpha, calculatedAlpha } = calculateNextStep({
       index,
@@ -36,6 +32,7 @@ class FlowerMenu extends Component {
       options,
       btnIcon,
       btnColor,
+      btnBgColor,
       active,
       onClick,
       btnTxtColor
@@ -52,13 +49,15 @@ class FlowerMenu extends Component {
                   key={`item_${index}_${item.name}`}
                   className="child"
                   style={{
-                    transform: active ? `rotate(${calculatedAlpha}deg)` : ''
+                    transform: active
+                      ? `rotate(${calculatedAlpha}deg)`
+                      : `rotate(${-calculatedAlpha}deg)`
                   }}>
                   <div
                     className="leaf"
                     style={{
                       transform: active
-                        ? `rotate(${calculatedAlpha}deg) translateX(144px) rotate(${calculatedAlpha}deg)`
+                        ? `rotate(360deg) translateX(${this.opt.radius}px) `
                         : '',
                       backgroundColor: item.color,
                       backgroundSize: '100%',
@@ -77,14 +76,16 @@ class FlowerMenu extends Component {
                       style={{
                         transform: active
                           ? `rotate(${calculatedAlpha}deg)`
-                          : '',
+                          : `rotate(${-calculatedAlpha}deg)`,
                         height: '100%'
                       }}>
                       <div className="counterspin">
                         <div
                           className="glass"
                           style={{
-                            transform: active ? 'rotate(270deg)' : ''
+                            transform: active
+                              ? 'rotate(270deg)'
+                              : 'rotate(-270deg)'
                           }}
                         />
                       </div>
@@ -99,7 +100,8 @@ class FlowerMenu extends Component {
             {' '}
             <FloatingButton
               onClick={onClick}
-              bgColor={btnColor}
+              bgColor={btnBgColor}
+              btnColor={btnColor}
               btnIcon={btnIcon}
             />
           </div>
@@ -119,9 +121,11 @@ FlowerMenu.defaultProps = {
     { name: 'react', class: 'fab fa-react fa-4x', color: '#8992a3' }
   ],
   btnIcon: 'fab fa-jedi-order fa-4x',
-  btnColor: '#398963',
+  btnColor: '#fff',
+  btnBgColor: '#398963',
   btnTxtColor: '#ffffff',
-  startAngle: -90
+  startAngle: -90,
+  itemsDirection: 'right'
 }
 
 FlowerMenu.propTypes = {

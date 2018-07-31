@@ -113,10 +113,6 @@
   border: none;
 }
 
-/* .flower .child:nth-child(1) {
-  transform: rotate(-90deg);
-} */
-
 .flower .glass {
   height: 100%;
   transition: transform 3.2s ease-in-out;
@@ -132,7 +128,6 @@
 
 .flower.active .leaf {
   visibility: visible;
-  transform: rotate(720deg) translateX(144px) rotate(2250deg);
 }
 
 .flower.active .leaf:hover {
@@ -140,11 +135,7 @@
     inset 0 1px 0 rgba(255, 255, 255, 0.2);
 }
 
-.flower.active .leaf .glass {
-  transform: rotate(-2970deg);
-}
-
-button {
+div {
   outline: 0;
 }
 

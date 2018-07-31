@@ -1,16 +1,19 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import FloatingButton from '../common/floatingButton'
-import Menu from '../common/menu'
 import './flowerMenu.css'
 
 class FlowerMenu extends Component {
   constructor(props) {
     super(props)
+
     this.opt = {
       radius: 120,
       total: props.options.length,
-      optimalAlphaStep: 360 / props.options.length,
+      optimalAlphaStep:
+        props.options.length % 2 === 0
+          ? 360 / (props.options.length + 1)
+          : 360 / props.options.length,
       startAlpha: props.startAngle,
       currentAlpha: props.startAngle,
       direction: props.itemsDirection === 'right' ? 1 : -1
@@ -18,6 +21,7 @@ class FlowerMenu extends Component {
   }
 
   doMath(index, opt) {
+    console.log(this)
     const { calculateNextStep } = this.props
     const { nextAlpha, calculatedAlpha } = calculateNextStep({
       index,
@@ -54,13 +58,13 @@ class FlowerMenu extends Component {
                     className="leaf"
                     style={{
                       transform: active
-                        ? `rotate(${calculatedAlpha}deg) translateX(144px) rotate(2250deg)`
+                        ? `rotate(${calculatedAlpha}deg) translateX(144px) rotate(${calculatedAlpha}deg)`
                         : '',
                       backgroundColor: item.color,
                       backgroundSize: '100%',
                       opacity: '0.94',
                       transition:
-                        'transform 3.2s ease-in-out, box-shadow 0.16s ease-in-out, visibility 3.2s linear'
+                        'transform 1.5s ease-in-out, box-shadow 0.16s ease-in-out, visibility 1.5s linear'
                     }}>
                     <i
                       className={item.class}
@@ -77,7 +81,12 @@ class FlowerMenu extends Component {
                         height: '100%'
                       }}>
                       <div className="counterspin">
-                        <div className="glass" />
+                        <div
+                          className="glass"
+                          style={{
+                            transform: active ? 'rotate(270deg)' : ''
+                          }}
+                        />
                       </div>
                     </div>
                   </div>
@@ -109,9 +118,6 @@ FlowerMenu.defaultProps = {
     { name: 'empire', class: 'fab fa-empire fa-4x', color: '#4089c8' },
     { name: 'react', class: 'fab fa-react fa-4x', color: '#8992a3' }
   ],
-  halfSpin: false,
-  spinDirection: 'right',
-  itemsDirection: 'right',
   btnIcon: 'fab fa-jedi-order fa-4x',
   btnColor: '#398963',
   btnTxtColor: '#ffffff',

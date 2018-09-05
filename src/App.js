@@ -1,4 +1,5 @@
 import './App.css'
+import './media.css'
 import React, { Component } from 'react'
 import Header from './componets/header'
 import Stage from './componets/stage'

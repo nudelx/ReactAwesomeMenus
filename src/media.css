@@ -1,0 +1,17 @@
+@media all and (max-width: 1300px) {
+  body{
+    width: auto;
+  }
+  div.card {
+    white-space:normal;
+    width: 100%;
+
+  }
+  div.box {
+    border: 1px solid #47535F;
+  }
+
+  div.box div.seporator {
+    display: none;
+  }
+}

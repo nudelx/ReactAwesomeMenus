@@ -5,6 +5,7 @@ import Header from './componets/header'
 import Stage from './componets/stage'
 import TitleCard from './componets/titleCard'
 import Welcome from './componets/welcome'
+import  './walk' 
 
 class App extends Component {
   render() {

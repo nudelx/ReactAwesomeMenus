@@ -248,4 +248,5 @@
   };
   SamGuide.init.prototype = SamGuide.prototype;
   global.SAMG = SamGuide({ serverUrl: "guide.json" });
+  
 })(window);

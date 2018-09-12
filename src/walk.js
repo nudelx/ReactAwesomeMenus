@@ -1,6 +1,15 @@
 ;(function(global) {
 
-
+// TODO:
+/*
+  actions  click
+  add borders
+  mark element
+  trigger
+  navigation ?
+  backend for users
+  multiple instances ??
+*/
   var SamGuide = function(config) {
     return new SamGuide.init(config)
   }
@@ -29,8 +38,13 @@
       `,
       body: document.querySelector('body'),
     }
-
-    this.getSlides(config.serverUrl)
+    console.log(this)
+    if (this.config.attachOnElement) {
+      this.resources.attachedEl = document.querySelector('div.logo-wrapper')
+      this.resources.attachedEl && this.resources.attachedEl.addEventListener('click', this.activateGuide)
+    } else {
+      this.getSlides(this.config.serverUrl)
+    }
 
   }
   SamGuide.prototype = {
@@ -202,5 +216,5 @@
 
   }
   SamGuide.init.prototype = SamGuide.prototype
-  global.SAMG = SamGuide({ serverUrl: 'guide.json'})
+  global.SAMG = SamGuide({ serverUrl: 'guide.json', attachOnElement: 'div.logo-wrapper'})
 })(window)

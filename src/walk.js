@@ -182,12 +182,28 @@
       }
       this.resources.stage.appendChild(this.lastElement)
       toFocus && this.scrollToElement(this.selectedElement)
+      if (slide.event && slide.event.actions) this.doActions(slide.event, this.selectedElement)
+    },
+
+    wait: function (ms) {
+      return new Promise(function (r, j) { return setTimeout(r, ms)})
+    },
+
+    doActions: function (event, el) {
+      var actions = event.actions
+      var self = this
+      actions.forEach(function (a) {
+        var actionEl = event.selector ? el.querySelector(event.selector) : el
+        typeof actionEl[a] === 'function' && actionEl[a]()
+        self.wait(2000)
+      })
+
     },
 
     scrollToElement:function (el) {
       var offSet = el.getBoundingClientRect()
       window.scrollTo({
-        top: offSet.top- (parseInt(offSet.top, 10)*0.3),
+        top: offSet.top- (parseInt(offSet.top, 10)*0.2),
         behavior: "smooth"
       });
     },
@@ -216,5 +232,5 @@
 
   }
   SamGuide.init.prototype = SamGuide.prototype
-  global.SAMG = SamGuide({ serverUrl: 'guide.json', attachOnElement: 'div.logo-wrapper'})
+  global.SAMG = SamGuide({ serverUrl: 'guide.json'})
 })(window)

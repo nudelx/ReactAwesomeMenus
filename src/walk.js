@@ -44,6 +44,7 @@
       `,
       body: document.querySelector("body")
     };
+    console.log(this);
     if (this.config.attachOnElement) {
       this.resources.attachedEl = document.querySelector("div.logo-wrapper");
       this.resources.attachedEl &&
@@ -247,5 +248,4 @@
   };
   SamGuide.init.prototype = SamGuide.prototype;
   global.SAMG = SamGuide({ serverUrl: "guide.json" });
-
 })(window);

@@ -3,4 +3,4 @@
 
 ---
 
-[demo](https://github.com/nudelx/ReactAwesomeMenus/raw/master/img/demo.gif)
+<div><img src="https://github.com/nudelx/ReactAwesomeMenus/raw/master/img/demo.gif"></div>
